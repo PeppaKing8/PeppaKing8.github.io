@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://mrwang.github.io</id>
+    <id>https://PeppaKing8.github.io</id>
     <title>King8 | Turtle&apos;s blog.</title>
-    <updated>2020-02-25T07:08:51.168Z</updated>
+    <updated>2020-02-25T07:16:33.808Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://mrwang.github.io"/>
-    <link rel="self" href="https://mrwang.github.io/atom.xml"/>
+    <link rel="alternate" href="https://PeppaKing8.github.io"/>
+    <link rel="self" href="https://PeppaKing8.github.io/atom.xml"/>
     <subtitle>既然我已经踏上这条道路，那么，任何东西都不应妨碍我沿着这条路走下去。| Nothing should prevent me from following my favourate road.</subtitle>
-    <logo>https://mrwang.github.io/images/avatar.png</logo>
-    <icon>https://mrwang.github.io/favicon.ico</icon>
+    <logo>https://PeppaKing8.github.io/images/avatar.png</logo>
+    <icon>https://PeppaKing8.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, King8 | Turtle&apos;s blog.</rights>
     <entry>
         <title type="html"><![CDATA[Hello]]></title>
-        <id>https://mrwang.github.io/post/hello/</id>
-        <link href="https://mrwang.github.io/post/hello/">
+        <id>https://PeppaKing8.github.io/post/hello/</id>
+        <link href="https://PeppaKing8.github.io/post/hello/">
         </link>
         <updated>2020-02-25T06:34:02.000Z</updated>
         <content type="html"><![CDATA[<h2 id="this-is-the-gridea-word-test">This is the Gridea Word test.</h2>
@@ -23,8 +23,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[Hello Gridea]]></title>
-        <id>https://mrwang.github.io/post/hello-gridea/</id>
-        <link href="https://mrwang.github.io/post/hello-gridea/">
+        <id>https://PeppaKing8.github.io/post/hello-gridea/</id>
+        <link href="https://PeppaKing8.github.io/post/hello-gridea/">
         </link>
         <updated>2018-12-11T16:00:00.000Z</updated>
         <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
