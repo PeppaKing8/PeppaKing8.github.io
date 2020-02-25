@@ -1,103 +1,104 @@
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" >
+
 <title>LCA | User Unknown | WXB&#39;s blog.</title>
-<link rel="shortcut icon" href="https://PeppaKing8.github.io/favicon.ico?v=1582629779557">
-<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<meta name="description" content="既然我已经踏上这条道路，那么，任何东西都不会妨碍我沿着这条路走下去。| Nothing could prevent me from following my favourate road.">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://PeppaKing8.github.io/favicon.ico?v=1582632673584">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://PeppaKing8.github.io/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="LCA | User Unknown | WXB&#39;s blog. - Atom Feed" href="https://PeppaKing8.github.io/atom.xml">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
 
-    <meta name="description" content="一 · LCA的定义
-给定一颗有根树，若结点ZZZ是XXX和YYY的祖先，则称ZZZ为XXX，YYY的公共祖先。
-在XXX，YYY的公共祖先中，深度最大的一个结点Z′Z&#x27;Z′为XXX，YYY的最近公共祖先，
-称作LCALCALCA..." />
-    <meta name="keywords" content="Course,Independent Creation,OI" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
-    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
   </head>
   <body>
-    <div class="main">
-      <div class="main-content">
-        <div class="site-header">
-  <a href="https://PeppaKing8.github.io">
-  <img class="avatar" src="https://PeppaKing8.github.io/images/avatar.png?v=1582629779557" alt="">
-  </a>
-  <h1 class="site-title">
-    User Unknown | WXB&#39;s blog.
-  </h1>
-  <p class="site-description">
-    既然我已经踏上这条道路，那么，任何东西都不会妨碍我沿着这条路走下去。| Nothing could prevent me from following my favourate road.
-  </p>
-  <div class="menu-container">
-    
-      
-        <a href="/" class="menu">
-          首页
-        </a>
-      
-    
-      
-        <a href="/archives" class="menu">
-          归档文章
-        </a>
-      
-    
-      
-        <a href="https://PeppaKing8.github.io/post/guan-yu-zuo-zhe" class="menu">
-          关于作者
-        </a>
-      
-    
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://PeppaKing8.github.io">User Unknown | WXB&#39;s blog.</a></h3>
   </div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
-</div>
-
-        <div class="post-detail">
-          <article class="post">
-            <h2 class="post-title">
-              LCA
-            </h2>
-            <div class="post-info">
-              <span>
-                2020-02-25
-              </span>
-              <span>
-                11 min read
-              </span>
-              
-                <a href="https://PeppaKing8.github.io/tag/_CwYvBOj8/" class="post-tag">
-                  # Course
-                </a>
-              
-                <a href="https://PeppaKing8.github.io/tag/Ad85aQKU0/" class="post-tag">
-                  # Independent Creation
-                </a>
-              
-                <a href="https://PeppaKing8.github.io/tag/2NkZlbOtF/" class="post-tag">
-                  # OI
-                </a>
-              
-            </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
             
-            <div class="post-content-wrapper">
-              <div class="post-content">
-                <h1 id="一-lca的定义">一 · LCA的定义</h1>
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档文章
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="https://PeppaKing8.github.io/post/guan-yu-zuo-zhe" class="menu">
+                关于作者
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>LCA</h1>
+            <p class="article-meta">
+              2020-02-25
+              
+                <a href="https://PeppaKing8.github.io/tag/_CwYvBOj8/" class="badge success">
+                  Course
+                </a>
+              
+                <a href="https://PeppaKing8.github.io/tag/Ad85aQKU0/" class="badge secondary">
+                  Independent Creation
+                </a>
+              
+                <a href="https://PeppaKing8.github.io/tag/2NkZlbOtF/" class="badge warning">
+                  OI
+                </a>
+              
+            </p>
+            
+            <div class="post-content">
+              <h1 id="一-lca的定义">一 · LCA的定义</h1>
 <p>给定一颗有根树，若结点<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Z</mi></mrow><annotation encoding="application/x-tex">Z</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">Z</span></span></span></span>是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>X</mi></mrow><annotation encoding="application/x-tex">X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span></span></span></span>和<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Y</mi></mrow><annotation encoding="application/x-tex">Y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span></span></span></span>的祖先，则称<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Z</mi></mrow><annotation encoding="application/x-tex">Z</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">Z</span></span></span></span>为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>X</mi></mrow><annotation encoding="application/x-tex">X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span></span></span></span>，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Y</mi></mrow><annotation encoding="application/x-tex">Y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span></span></span></span>的<strong>公共祖先</strong>。</p>
 <p>在<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>X</mi></mrow><annotation encoding="application/x-tex">X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span></span></span></span>，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Y</mi></mrow><annotation encoding="application/x-tex">Y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span></span></span></span>的公共祖先中，深度最大的一个结点<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>Z</mi><mo mathvariant="normal">′</mo></msup></mrow><annotation encoding="application/x-tex">Z&#x27;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.751892em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">Z</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span>为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>X</mi></mrow><annotation encoding="application/x-tex">X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span></span></span></span>，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Y</mi></mrow><annotation encoding="application/x-tex">Y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span></span></span></span>的<strong>最近公共祖先</strong>，<br>
 称作<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>L</mi><mi>C</mi><mi>A</mi></mrow><annotation encoding="application/x-tex">LCA</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">L</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault">A</span></span></span></span><strong>（Least Common Ancestors</strong>） 。</p>
@@ -318,123 +319,209 @@ int main(){
 }
 </code></pre>
 
-              </div>
-              <div class="toc-container">
-                <ul class="markdownIt-TOC">
-<li><a href="#%E4%B8%80-lca%E7%9A%84%E5%AE%9A%E4%B9%89">一 · LCA的定义</a></li>
-<li><a href="#%E4%BA%8C-%E6%B1%82%E6%B3%95">二 · 求法</a>
-<ul>
-<li><a href="#1-%E6%A0%91%E4%B8%8A%E5%80%8D%E5%A2%9E">1 树上倍增</a>
-<ul>
-<li><a href="#11-f%E6%95%B0%E7%BB%84%E7%9A%84%E5%AE%9A%E4%B9%89">1.1 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span></span></span></span>数组的定义</a></li>
-<li><a href="#12-%E5%88%A9%E7%94%A8f%E6%95%B0%E7%BB%84%E8%AE%A1%E7%AE%97lca">1.2 利用<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span></span></span></span>数组计算<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>L</mi><mi>C</mi><mi>A</mi></mrow><annotation encoding="application/x-tex">LCA</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">L</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault">A</span></span></span></span></a></li>
-<li><a href="#13-%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81">1.3 完整代码</a></li>
-</ul>
-</li>
-<li><a href="#2-st%E8%A1%A8">2 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi><mi>T</mi></mrow><annotation encoding="application/x-tex">ST</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span></span></span></span>表</a>
-<ul>
-<li><a href="#21-%E4%BB%80%E4%B9%88%E6%98%AFst%E8%A1%A8">2.1 什么是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi><mi>T</mi></mrow><annotation encoding="application/x-tex">ST</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span></span></span></span>表</a></li>
-<li><a href="#22-%E5%88%A9%E7%94%A8st%E8%A1%A8%E8%A7%A3%E5%86%B3lca%E9%97%AE%E9%A2%98">2.2 利用<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi><mi>T</mi></mrow><annotation encoding="application/x-tex">ST</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span></span></span></span>表解决<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>L</mi><mi>C</mi><mi>A</mi></mrow><annotation encoding="application/x-tex">LCA</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">L</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault">A</span></span></span></span>问题</a></li>
-<li><a href="#23-%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81">2.3 完整代码</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-              </div>
             </div>
           </article>
         </div>
-
-        
-          <div class="next-post">
-            <div class="next">下一篇</div>
-            <a href="https://PeppaKing8.github.io/post/shu-lian-pou-fen/">
-              <h3 class="post-title">
-                树链剖分
-              </h3>
-            </a>
-          </div>
-        
-
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                Next Passage
+              </div>
+              <a href="https://PeppaKing8.github.io/post/shu-lian-pou-fen/">
+                <h3 class="post-title">
+                  树链剖分
+                </h3>
+              </a>
+            </div>
+          
+        </div>
         
           
-            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+            <div class="paper" data-aos="fade-in">
+              <div id="gitalk-container"></div>
+            </div>
+          
 
-<div id="gitalk-container"></div>
+          
+        
+      </div>
 
-<script>
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://PeppaKing8.github.io/images/avatar.png?v=1582632673584" class="no-responsive avatar">
+    <div class="text-muted">既然我已经踏上这条道路，那么，任何东西都不会妨碍我沿着这条路走下去。| Nothing could prevent me from following my favourate road.</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      New Passages
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://PeppaKing8.github.io/post/guan-yu-zuo-zhe/">关于作者</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://PeppaKing8.github.io/post/2019-nian-acsl-di-yi-lun-you-ji/">2019年ACSL第一轮游记</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://PeppaKing8.github.io/post/20191228-qi-mo-kao-ji-lu/">2019.12.28期末考记录</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://PeppaKing8.github.io/post/2019119-mo-ni-kao-ri-ji/">2019.11.9模拟考日记</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://PeppaKing8.github.io/post/dino-run-de-gao-chao-zuo-bi-fang-fa/">Dino Run的高超作弊方法</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://PeppaKing8.github.io/post/san-jiao-han-shu/">三角函数</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://PeppaKing8.github.io/post/ou-la-lu-jing-yu-ha-mi-er-dun-huan/">欧拉路径与哈密尔顿环</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://PeppaKing8.github.io/post/quan-lao-ti/">奆佬题</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://PeppaKing8.github.io/post/ge-dian-yu-ge-bian/">割点与割边</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://PeppaKing8.github.io/post/lca/">LCA</a>
+            </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      Tag List
+    </div>
+    <div class="row">
+      
+        <a href="https://PeppaKing8.github.io/tag/y5S_vweOI/" class="badge warning">
+          Test/Contest Note
+        </a>
+      
+        <a href="https://PeppaKing8.github.io/tag/2NkZlbOtF/" class="badge secondary">
+          OI
+        </a>
+      
+        <a href="https://PeppaKing8.github.io/tag/M0m6BMNsj/" class="badge warning">
+          Fun
+        </a>
+      
+        <a href="https://PeppaKing8.github.io/tag/Go8OQnp-x/" class="badge success">
+          Math
+        </a>
+      
+        <a href="https://PeppaKing8.github.io/tag/_CwYvBOj8/" class="badge secondary">
+          Course
+        </a>
+      
+        <a href="https://PeppaKing8.github.io/tag/Ad85aQKU0/" class="badge warning">
+          Independent Creation
+        </a>
+      
+        <a href="https://PeppaKing8.github.io/tag/7DgsXXBUf/" class="badge warning">
+          Solution
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://PeppaKing8.github.io/atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
 
-  var gitalk = new Gitalk({
-    clientID: '',
-    clientSecret: '',
-    repo: '',
-    owner: '',
-    admin: [''],
-    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
-    distractionFreeMode: false  // Facebook-like distraction free mode
-  })
 
-  gitalk.render('gitalk-container')
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
 
 </script>
 
-          
 
-          
-        
 
-        <div class="site-footer">
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
-  <a class="rss" href="https://PeppaKing8.github.io/atom.xml" target="_blank">
-    <i class="ri-rss-line"></i> RSS
-  </a>
-</div>
-
-      </div>
-    </div>
-
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
     <script>
-      hljs.initHighlightingOnLoad()
 
-      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+      var gitalk = new Gitalk({
+        clientID: '',
+        clientSecret: '',
+        repo: '',
+        owner: '',
+        admin: [''],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
 
-      // This should probably be throttled.
-      // Especially because it triggers during smooth scrolling.
-      // https://lodash.com/docs/4.17.10#throttle
-      // You could do like...
-      // window.addEventListener("scroll", () => {
-      //    _.throttle(doThatStuff, 100);
-      // });
-      // Only not doing it here to keep this Pen dependency-free.
-
-      window.addEventListener("scroll", event => {
-        let fromTop = window.scrollY;
-
-        mainNavLinks.forEach((link, index) => {
-          let section = document.getElementById(decodeURI(link.hash).substring(1));
-          let nextSection = null
-          if (mainNavLinks[index + 1]) {
-            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
-          }
-          if (section.offsetTop <= fromTop) {
-            if (nextSection) {
-              if (nextSection.offsetTop > fromTop) {
-                link.classList.add("current");
-              } else {
-                link.classList.remove("current");    
-              }
-            } else {
-              link.classList.add("current");
-            }
-          } else {
-            link.classList.remove("current");
-          }
-        });
-      });
+      gitalk.render('gitalk-container')
 
     </script>
+  
+
+  
+
+
+
+
   </body>
 </html>

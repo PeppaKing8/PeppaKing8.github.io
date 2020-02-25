@@ -1,101 +1,104 @@
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" >
+
 <title>割点与割边 | User Unknown | WXB&#39;s blog.</title>
-<link rel="shortcut icon" href="https://PeppaKing8.github.io/favicon.ico?v=1582629779557">
-<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<meta name="description" content="既然我已经踏上这条道路，那么，任何东西都不会妨碍我沿着这条路走下去。| Nothing could prevent me from following my favourate road.">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://PeppaKing8.github.io/favicon.ico?v=1582632673584">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://PeppaKing8.github.io/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="割点与割边 | User Unknown | WXB&#39;s blog. - Atom Feed" href="https://PeppaKing8.github.io/atom.xml">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
 
-    <meta name="description" content="1.割点的定义，相关知识和性质
-在一个无向图GGG中，如果有一个顶点集合，删除这个顶点集合以及这个集合中所有顶点相关联的边以后，图的连通分量增多，就称这个点集为割点集合。特别的，如果GGG联通，则是删除这个顶点集合以及这个集合中所有顶点相关..." />
-    <meta name="keywords" content="Course,Independent Creation,OI" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
-    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
   </head>
   <body>
-    <div class="main">
-      <div class="main-content">
-        <div class="site-header">
-  <a href="https://PeppaKing8.github.io">
-  <img class="avatar" src="https://PeppaKing8.github.io/images/avatar.png?v=1582629779557" alt="">
-  </a>
-  <h1 class="site-title">
-    User Unknown | WXB&#39;s blog.
-  </h1>
-  <p class="site-description">
-    既然我已经踏上这条道路，那么，任何东西都不会妨碍我沿着这条路走下去。| Nothing could prevent me from following my favourate road.
-  </p>
-  <div class="menu-container">
-    
-      
-        <a href="/" class="menu">
-          首页
-        </a>
-      
-    
-      
-        <a href="/archives" class="menu">
-          归档文章
-        </a>
-      
-    
-      
-        <a href="https://PeppaKing8.github.io/post/guan-yu-zuo-zhe" class="menu">
-          关于作者
-        </a>
-      
-    
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://PeppaKing8.github.io">User Unknown | WXB&#39;s blog.</a></h3>
   </div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
-</div>
-
-        <div class="post-detail">
-          <article class="post">
-            <h2 class="post-title">
-              割点与割边
-            </h2>
-            <div class="post-info">
-              <span>
-                2020-02-25
-              </span>
-              <span>
-                14 min read
-              </span>
-              
-                <a href="https://PeppaKing8.github.io/tag/_CwYvBOj8/" class="post-tag">
-                  # Course
-                </a>
-              
-                <a href="https://PeppaKing8.github.io/tag/Ad85aQKU0/" class="post-tag">
-                  # Independent Creation
-                </a>
-              
-                <a href="https://PeppaKing8.github.io/tag/2NkZlbOtF/" class="post-tag">
-                  # OI
-                </a>
-              
-            </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
             
-            <div class="post-content-wrapper">
-              <div class="post-content">
-                <h2 id="1割点的定义相关知识和性质">1.割点的定义，相关知识和性质</h2>
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档文章
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="https://PeppaKing8.github.io/post/guan-yu-zuo-zhe" class="menu">
+                关于作者
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>割点与割边</h1>
+            <p class="article-meta">
+              2020-02-25
+              
+                <a href="https://PeppaKing8.github.io/tag/_CwYvBOj8/" class="badge success">
+                  Course
+                </a>
+              
+                <a href="https://PeppaKing8.github.io/tag/Ad85aQKU0/" class="badge warning">
+                  Independent Creation
+                </a>
+              
+                <a href="https://PeppaKing8.github.io/tag/2NkZlbOtF/" class="badge warning">
+                  OI
+                </a>
+              
+            </p>
+            
+            <div class="post-content">
+              <h2 id="1割点的定义相关知识和性质">1.割点的定义，相关知识和性质</h2>
 <p>在一个无向图<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">G</span></span></span></span>中，如果有一个<strong>顶点集合</strong>，删除这个顶点集合以及这个集合中所有顶点相关联的边以后，图的连通分量增多，就称这个点集为<strong>割点集合</strong>。特别的，如果<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">G</span></span></span></span>联通，则是删除这个顶点集合以及这个集合中所有顶点相关联的边以后图不再联通的顶点集合。</p>
 <p>如果某个割点集合只含有一个顶点<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>（也即<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>{</mo><mi>x</mi><mo>}</mo></mrow><annotation encoding="application/x-tex">\{x\}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathdefault">x</span><span class="mclose">}</span></span></span></span>是一个割点集合），那么<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>称为一个<strong>割点</strong>。</p>
 <p>在无向连通图<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">G</span></span></span></span>中，如果<strong>点连通度</strong>（最小割点集合的大小）大于1，称该图为<strong>点双连通</strong>。（<code>point biconnected</code>）。<strong>点双连通图不存在割点。</strong></p>
@@ -463,139 +466,209 @@ int main(){
 <h4 id="如果一个图g要将它增加一些边使得g变为边双连通子图-那么至少增加多少条边">如果一个图<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">G</span></span></span></span>，要将它增加一些边，使得<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">G</span></span></span></span>变为边双连通子图。那么至少增加多少条边？</h4>
 <p>可以先求<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">G</span></span></span></span>的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>E</mi><mi>B</mi><mi>C</mi></mrow><annotation encoding="application/x-tex">EBC</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span></span></span></span>。将每一个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>E</mi><mi>B</mi><mi>C</mi></mrow><annotation encoding="application/x-tex">EBC</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span></span></span></span>缩成一个点，这几个点互相之间连接的边形成了一棵树。则仅需在度数为1的结点上加边即可。设度数为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>的结点的个数为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span>，则答案就是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>[</mo><mfrac><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow><mn>2</mn></mfrac><mo>]</mo></mrow><annotation encoding="application/x-tex">[\dfrac{k+1}{2}]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.05744em;vertical-align:-0.686em;"></span><span class="mopen">[</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.37144em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose">]</span></span></span></span>。</p>
 
-              </div>
-              <div class="toc-container">
-                <ul class="markdownIt-TOC">
-<li>
-<ul>
-<li><a href="#1%E5%89%B2%E7%82%B9%E7%9A%84%E5%AE%9A%E4%B9%89%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E5%92%8C%E6%80%A7%E8%B4%A8">1.割点的定义，相关知识和性质</a>
-<ul>
-<li><a href="#%E5%89%B2%E7%82%B9%E7%9A%84%E6%80%A7%E8%B4%A8">割点的性质：</a></li>
-<li><a href="#%E7%82%B9%E5%8F%8C%E8%BF%9E%E9%80%9A%E5%88%86%E9%87%8Fbcc%E7%9A%84%E6%80%A7%E8%B4%A8">点双连通分量（<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>B</mi><mi>C</mi><mi>C</mi></mrow><annotation encoding="application/x-tex">BCC</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span></span></span></span>）的性质：</a></li>
-</ul>
-</li>
-<li><a href="#2%E5%89%B2%E8%BE%B9%E7%9A%84%E5%AE%9A%E4%B9%89%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E5%92%8C%E6%80%A7%E8%B4%A8">2.割边的定义，相关知识和性质</a>
-<ul>
-<li><a href="#%E6%80%A7%E8%B4%A8">性质：</a></li>
-</ul>
-</li>
-<li><a href="#3%E5%89%B2%E7%82%B9%E7%9A%84%E6%B1%82%E6%B3%95">3.割点的求法</a>
-<ul>
-<li><a href="#%E6%96%B9%E6%B3%95%E4%B8%80%E6%9A%B4%E5%8A%9B">方法一：暴力</a></li>
-<li><a href="#%E6%96%B9%E6%B3%95%E4%BA%8Ctarjan">方法二：Tarjan</a></li>
-</ul>
-</li>
-<li><a href="#4%E5%89%B2%E8%BE%B9%E6%A1%A5%E7%9A%84%E6%B1%82%E6%B3%95">4.割边（桥）的求法</a>
-<ul>
-<li><a href="#%E6%96%B9%E6%B3%95%E4%B8%80%E6%9A%B4%E5%8A%9B-2">方法一：暴力</a></li>
-<li><a href="#%E6%96%B9%E6%B3%95%E4%BA%8Ctarjan-2">方法二：Tarjan</a></li>
-</ul>
-</li>
-<li><a href="#5%E7%82%B9%E5%8F%8C%E8%BF%9E%E9%80%9A%E5%88%86%E9%87%8Fbcc%E7%9A%84%E6%B1%82%E6%B3%95">5.点双连通分量（<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>B</mi><mi>C</mi><mi>C</mi></mrow><annotation encoding="application/x-tex">BCC</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span></span></span></span>）的求法</a></li>
-<li><a href="#6%E8%BE%B9%E5%8F%8C%E8%BF%9E%E9%80%9A%E5%88%86%E9%87%8Febc%E7%9A%84%E6%B1%82%E6%B3%95">6.边双连通分量（<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>E</mi><mi>B</mi><mi>C</mi></mrow><annotation encoding="application/x-tex">EBC</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span></span></span></span>）的求法</a></li>
-<li><a href="#7%E5%85%B3%E4%BA%8Eebc%E7%9A%84%E9%97%AE%E9%A2%98">7.关于EBC的问题</a><br>
-*
-<ul>
-<li><a href="#%E5%A6%82%E6%9E%9C%E4%B8%80%E4%B8%AA%E5%9B%BEg%E8%A6%81%E5%B0%86%E5%AE%83%E5%A2%9E%E5%8A%A0%E4%B8%80%E4%BA%9B%E8%BE%B9%E4%BD%BF%E5%BE%97g%E5%8F%98%E4%B8%BA%E8%BE%B9%E5%8F%8C%E8%BF%9E%E9%80%9A%E5%AD%90%E5%9B%BE-%E9%82%A3%E4%B9%88%E8%87%B3%E5%B0%91%E5%A2%9E%E5%8A%A0%E5%A4%9A%E5%B0%91%E6%9D%A1%E8%BE%B9">如果一个图<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">G</span></span></span></span>，要将它增加一些边，使得<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">G</span></span></span></span>变为边双连通子图。那么至少增加多少条边？</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-              </div>
             </div>
           </article>
         </div>
-
-        
-          <div class="next-post">
-            <div class="next">下一篇</div>
-            <a href="https://PeppaKing8.github.io/post/lca/">
-              <h3 class="post-title">
-                LCA
-              </h3>
-            </a>
-          </div>
-        
-
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                Next Passage
+              </div>
+              <a href="https://PeppaKing8.github.io/post/lca/">
+                <h3 class="post-title">
+                  LCA
+                </h3>
+              </a>
+            </div>
+          
+        </div>
         
           
-            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+            <div class="paper" data-aos="fade-in">
+              <div id="gitalk-container"></div>
+            </div>
+          
 
-<div id="gitalk-container"></div>
+          
+        
+      </div>
 
-<script>
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://PeppaKing8.github.io/images/avatar.png?v=1582632673584" class="no-responsive avatar">
+    <div class="text-muted">既然我已经踏上这条道路，那么，任何东西都不会妨碍我沿着这条路走下去。| Nothing could prevent me from following my favourate road.</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      New Passages
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://PeppaKing8.github.io/post/guan-yu-zuo-zhe/">关于作者</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://PeppaKing8.github.io/post/2019-nian-acsl-di-yi-lun-you-ji/">2019年ACSL第一轮游记</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://PeppaKing8.github.io/post/20191228-qi-mo-kao-ji-lu/">2019.12.28期末考记录</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://PeppaKing8.github.io/post/2019119-mo-ni-kao-ri-ji/">2019.11.9模拟考日记</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://PeppaKing8.github.io/post/dino-run-de-gao-chao-zuo-bi-fang-fa/">Dino Run的高超作弊方法</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://PeppaKing8.github.io/post/san-jiao-han-shu/">三角函数</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://PeppaKing8.github.io/post/ou-la-lu-jing-yu-ha-mi-er-dun-huan/">欧拉路径与哈密尔顿环</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://PeppaKing8.github.io/post/quan-lao-ti/">奆佬题</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://PeppaKing8.github.io/post/ge-dian-yu-ge-bian/">割点与割边</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://PeppaKing8.github.io/post/lca/">LCA</a>
+            </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      Tag List
+    </div>
+    <div class="row">
+      
+        <a href="https://PeppaKing8.github.io/tag/y5S_vweOI/" class="badge ">
+          Test/Contest Note
+        </a>
+      
+        <a href="https://PeppaKing8.github.io/tag/2NkZlbOtF/" class="badge success">
+          OI
+        </a>
+      
+        <a href="https://PeppaKing8.github.io/tag/M0m6BMNsj/" class="badge secondary">
+          Fun
+        </a>
+      
+        <a href="https://PeppaKing8.github.io/tag/Go8OQnp-x/" class="badge secondary">
+          Math
+        </a>
+      
+        <a href="https://PeppaKing8.github.io/tag/_CwYvBOj8/" class="badge secondary">
+          Course
+        </a>
+      
+        <a href="https://PeppaKing8.github.io/tag/Ad85aQKU0/" class="badge secondary">
+          Independent Creation
+        </a>
+      
+        <a href="https://PeppaKing8.github.io/tag/7DgsXXBUf/" class="badge secondary">
+          Solution
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://PeppaKing8.github.io/atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
 
-  var gitalk = new Gitalk({
-    clientID: '',
-    clientSecret: '',
-    repo: '',
-    owner: '',
-    admin: [''],
-    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
-    distractionFreeMode: false  // Facebook-like distraction free mode
-  })
 
-  gitalk.render('gitalk-container')
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
 
 </script>
 
-          
 
-          
-        
 
-        <div class="site-footer">
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
-  <a class="rss" href="https://PeppaKing8.github.io/atom.xml" target="_blank">
-    <i class="ri-rss-line"></i> RSS
-  </a>
-</div>
-
-      </div>
-    </div>
-
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
     <script>
-      hljs.initHighlightingOnLoad()
 
-      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+      var gitalk = new Gitalk({
+        clientID: '',
+        clientSecret: '',
+        repo: '',
+        owner: '',
+        admin: [''],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
 
-      // This should probably be throttled.
-      // Especially because it triggers during smooth scrolling.
-      // https://lodash.com/docs/4.17.10#throttle
-      // You could do like...
-      // window.addEventListener("scroll", () => {
-      //    _.throttle(doThatStuff, 100);
-      // });
-      // Only not doing it here to keep this Pen dependency-free.
-
-      window.addEventListener("scroll", event => {
-        let fromTop = window.scrollY;
-
-        mainNavLinks.forEach((link, index) => {
-          let section = document.getElementById(decodeURI(link.hash).substring(1));
-          let nextSection = null
-          if (mainNavLinks[index + 1]) {
-            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
-          }
-          if (section.offsetTop <= fromTop) {
-            if (nextSection) {
-              if (nextSection.offsetTop > fromTop) {
-                link.classList.add("current");
-              } else {
-                link.classList.remove("current");    
-              }
-            } else {
-              link.classList.add("current");
-            }
-          } else {
-            link.classList.remove("current");
-          }
-        });
-      });
+      gitalk.render('gitalk-container')
 
     </script>
+  
+
+  
+
+
+
+
   </body>
 </html>
