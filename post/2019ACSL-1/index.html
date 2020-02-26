@@ -6,7 +6,7 @@
 <meta HTTP-EQUIV="pragma" CONTENT="no-cache"> 
 <meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate"> 
 <meta HTTP-EQUIV="expires" CONTENT="0"> 
-<title>Dino Run的高超作弊方法 | User Unknown | WXB&#39;s blog.</title>	
+<title>2019年ACSL第一轮游记 | User Unknown | WXB&#39;s blog.</title>	
 
 <link rel="stylesheet" href="https://PeppaKing8.github.io/styles/main.css">
 <script type="text/javascript">
@@ -144,10 +144,10 @@ window.onload=getCSS();
 	
 	                      
 		<div class="entry-content">
-			<h1 class="wow swing entry-title">Dino Run的高超作弊方法</h1>
+			<h1 class="wow swing entry-title">2019年ACSL第一轮游记</h1>
 <div class="entry-meta">
 <div class="wow bounce">
-	<i class="iconfont icon-rili"> <time class="lately-a" datetime="2020-02-25 18:08:08" itemprop="datePublished" pubdate="">2020-02-25</time></i>
+	<i class="iconfont icon-rili"> <time class="lately-a" datetime="2019-11-28 18:47:26" itemprop="datePublished" pubdate="">2019-11-28</time></i>
 	          </div>
 			
 </span>
@@ -155,48 +155,46 @@ window.onload=getCSS();
 		</div>
                   
 			<div class="wow slideInLeft entry-summary song">
-				<p><strong>Dino Run</strong>是一个在谷歌浏览器中，断网后仍然可以游玩的休闲游戏。游戏规则是，使用上下键（分别代表跳跃和低头），操作小恐龙奔跑，躲避路上的障碍（仙人掌和鸟）。</p>
-<figure data-type="image" tabindex="1"><img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=214869129,647308798&amp;fm=26&amp;gp=0.jpg" alt="" loading="lazy"></figure>
-<p>就是这样。如果断网，上面就会显示出小恐龙，按一下上或下键即可操作它玩游戏了！</p>
-<p>在Google Chrome浏览器上，进入网站<code>chrome://dino</code>即可游玩游戏。或者也可以断网。<s>不过这不值得</s>。</p>
-<p>如题所说，Dino Run游戏中，我们可以<strong>开外挂</strong>。</p>
-<p>首先，右键点击Google Chrome，选择“<strong>检查</strong>”/“<strong>审查元素</strong>”（或者也可以按F12键）；</p>
-<p>右方就会出现写程序的面板，选择<strong>Resources</strong>；</p>
-<p>接下来就是我们的操作了。</p>
-<h2 id="1不死挂">1.不死挂</h2>
-<pre><code>Runner.instance_.gameOver=function(){};
-</code></pre>
-<p>在Resources写代码处，复制一个这样的代码，然后关闭检查，重新开一局游戏即可体验。</p>
-<p><strong>效果</strong>：可穿过障碍物</p>
-<p><strong>原理</strong>：清空游戏的中断逻辑，也就是说将判断死亡函数清空，做到无敌效果。</p>
-<h2 id="2加分挂">2.加分挂</h2>
-<pre><code>var hackScore=0;
-
-Object.defineProperty(Runner.instance_,&quot;distanceRan&quot;,{get:function(){return hackScore},set:function(a){return hackScore=a+Math.floor(1E3*Math.random())},configurable:!0,enumerable:!0});
-</code></pre>
-<p><strong>效果</strong>：获取分数的速度增大1000倍。也可以调整代码中的数字（1E3），调节分数增长速度。</p>
-<p><strong>原理</strong>：ES5 有一个很古老的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><mi>P</mi><mi>I</mi></mrow><annotation encoding="application/x-tex">API</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">A</span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mord mathdefault" style="margin-right:0.07847em;">I</span></span></span></span>， <code>Object.defineProperty()</code>，借助这个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><mi>P</mi><mi>I</mi></mrow><annotation encoding="application/x-tex">API</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">A</span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mord mathdefault" style="margin-right:0.07847em;">I</span></span></span></span>，我们能够轻易的修改现有对象上的属性，配合重新定义对象具体内容的 <code>getter</code>、<code>setter</code> 描述符，可以做到对于属性的劫持操作。</p>
-<h2 id="3自动挂">3.自动挂</h2>
-<pre><code>function TrexRunnerBot(){function f(){Runner().onKeyDown(d);setTimeout(function(){Runner().onKeyUp(d)},500)}var b=function(a){return{keyCode:a,preventDefault:function(){}}},c=b(38),d=b(40),e=b(32);Runner().playing||(Runner().onKeyDown(e),setTimeout(function(){Runner().onKeyUp(e)},500));return{conquerTheGame:function(){if(Runner&amp;&amp;Runner().horizon.obstacles[0]){var a=Runner().horizon.obstacles[0];if((!a.typeConfig||&quot;SNACK&quot;!==a.typeConfig.type)&amp;&amp;50!==a.yPos&amp;&amp;a.xPos&lt;=18*Runner().currentSpeed)if(50=== a.yPos)f();else{var b=Runner().horizon.obstacles[1];if(b&amp;&amp;b.xPos-a.xPos&lt;=42*Runner().currentSpeed)Runner().onKeyDown(c),Runner().onKeyUp(c);else Runner().onKeyDown(c)}}}}}var bot=TrexRunnerBot(),botInterval=setInterval(bot.conquerTheGame,2);
-</code></pre>
-<p><strong>效果</strong>：自动跳跃，躲避，不需人工操作</p>
-<p><strong>原理</strong>：通过修改跳跃函数，计时器的操作来实现自动化。</p>
-<p>这个外挂是基于计时器进行距离计算并模拟用户操作的，当你获得很高很高的分数之后，障碍物推进速度过快，一旦你进行窗口的来回切换，游戏进行暂停和游玩的状态切换，很大概率上操作会延时，导致游戏失败。</p>
+				<p>11月，我和DCX，LXC组队参加了ACSL比赛。</p>
+<p>啥是ACSL？</p>
+<p><strong>美国计算机科学联赛</strong>（<strong>ACSL</strong>）起源于<strong>美国硅谷</strong>，拥有40 年的历史，是美国历史悠久的中小学生计算机编程赛事之一。该比赛同时获得了美国国家中学校长联盟NASSP 与美国计算机科学教师协会的官方认证和推荐，同时获得了如谷歌、Adobe、No Starch Press、O'Reilly Media、Pearson、Pragmatic Bookshelf、and Wolfram 等著名高科技和教育企业的支持。随着各国日益重视编程教育，<strong>每年来自美国、加拿大、欧洲、非洲和亚洲的众多中小学生都踊跃参加到该竞赛中。</strong></p>
+<p><s>总的来说，这个比赛就是来搞笑的。</s></p>
+<h3 id="day-25">DAY -25</h3>
+<p>大概是离第一轮25天之前吧，老师让我们报名了ACSL比赛，并带我们做了一些历年第一轮真题。<s>贼TM简单</s>。</p>
+<p>题目大概是什么水平呢？一共有5道题，考30分钟。这5道题分三个模块，分别是<strong>进制，函数和代码</strong>。这些题真的没水平。<s>美国人就是这样。</s></p>
+<h3 id="day-10">DAY -10</h3>
+<p>老师给我们发了一套练习题。<s>我都没做</s>。</p>
+<h3 id="day-1">DAY -1</h3>
+<p>我都渐渐把这个比赛遗忘了。直到前一天，我爸跟我说明天比赛，<s>我才想起来原来有这个比赛</s>。总之，在比赛前，我都会准备一番。我拿出空空如也的真题，做了几道，不想做了。</p>
+<p>这种题就是比手速吧。</p>
+<p>后来也仔细想了想，ACSL一共有4轮，每轮的难度肯定会递增，所以第一轮简单是很自然的。</p>
+<h3 id="day-1-2">DAY 1</h3>
+<p>怀着<s>没啥事</s>的心情，来到了考场。考点是在一个叫“王府学校”的地方，果然是国际比赛啊，考点名字都霸气。</p>
+<p>不久后LXC和DCX也来了。YLX的那一组我们也认识，会合后我们就拿出电脑<s>无线放歌</s>。</p>
+<p>紧接着是进场，然后入座。考试前家长让我带一个小妹妹，据说是信息dalao的女儿。半路上看见了足球场（<s>没错，如此悠闲</s>），我们就约好了考完后在这里踢球。</p>
+<p>首先是半个小时的笔试。第一题是进制题，结果我NC，算了5个互无关联的答案出来。最后搞了大概5分钟才做出正确答案。<s>我太难了</s>。</p>
+<p>最后的几道题还算比较顺利。做完之后，因为坐的是有轮子的椅子，我就坐着转圈，闲的没事干。后来因为要保证正确，又检查了几遍。</p>
+<p>考完笔试，我们对了一下答案，全对。<s>这是应该的</s>。</p>
+<p>之后就是90分钟的合作解题了。规则是让我们在规定时间内完成一道信息题，上机编程序。题目大概是红题难度吧，<s>也可能更简单一些</s>。</p>
+<p>反正我们是15分钟搞定，因为出现了一些BUG。之后的时间，我们就开始<s>游玩电脑上的所有东东</s>。LXC后来给我讲了莫队，结果没讲成，<s>还让我们俩笑了大半天</s>。</p>
+<p>总之，本场比赛欢乐多多。后来我们是踢球了，结果被家长拽出来了。期待下一轮。</p>
 
 							</div>
 	<div class="wow bounceInDown vt-post-tags">
  
-				<a href="https://PeppaKing8.github.io/tag/M0m6BMNsj/" rel="tag">Fun</a>	
+				<a href="https://PeppaKing8.github.io/tag/y5S_vweOI/" rel="tag">Test/Contest Note</a>	
+				 
+				<a href="https://PeppaKing8.github.io/tag/2NkZlbOtF/" rel="tag">OI</a>	
 				 
 					</div>						
 <nav class="navigation3 post-navigation3" role="navigation">
 		
 		<div class="nav-links3">
       
-		<div class="wow bounceInLeft nav-previous3"><a href="https://PeppaKing8.github.io/post/Writer-Information/" rel="prev"> 关于作者</a></div>
+		<div class="wow bounceInLeft nav-previous3"><a href="https://PeppaKing8.github.io/post/20191228test/" rel="prev"> 2019.12.28期末考记录</a></div>
 		 
 		 
-		<div class="wow bounceInRight nav-next3"><a href="https://PeppaKing8.github.io/post/san-jiao-han-shu/" rel="next"> 三角函数</a></div>
+		<div class="wow bounceInRight nav-next3"><a href="https://PeppaKing8.github.io/post/20191109test/" rel="next"> 2019.11.9模拟考日记</a></div>
 		
 		</div>
 	</nav>

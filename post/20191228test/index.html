@@ -6,7 +6,7 @@
 <meta HTTP-EQUIV="pragma" CONTENT="no-cache"> 
 <meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate"> 
 <meta HTTP-EQUIV="expires" CONTENT="0"> 
-<title>Dino Run的高超作弊方法 | User Unknown | WXB&#39;s blog.</title>	
+<title>2019.12.28期末考记录 | User Unknown | WXB&#39;s blog.</title>	
 
 <link rel="stylesheet" href="https://PeppaKing8.github.io/styles/main.css">
 <script type="text/javascript">
@@ -144,10 +144,10 @@ window.onload=getCSS();
 	
 	                      
 		<div class="entry-content">
-			<h1 class="wow swing entry-title">Dino Run的高超作弊方法</h1>
+			<h1 class="wow swing entry-title">2019.12.28期末考记录</h1>
 <div class="entry-meta">
 <div class="wow bounce">
-	<i class="iconfont icon-rili"> <time class="lately-a" datetime="2020-02-25 18:08:08" itemprop="datePublished" pubdate="">2020-02-25</time></i>
+	<i class="iconfont icon-rili"> <time class="lately-a" datetime="2019-12-28 18:45:39" itemprop="datePublished" pubdate="">2019-12-28</time></i>
 	          </div>
 			
 </span>
@@ -155,48 +155,73 @@ window.onload=getCSS();
 		</div>
                   
 			<div class="wow slideInLeft entry-summary song">
-				<p><strong>Dino Run</strong>是一个在谷歌浏览器中，断网后仍然可以游玩的休闲游戏。游戏规则是，使用上下键（分别代表跳跃和低头），操作小恐龙奔跑，躲避路上的障碍（仙人掌和鸟）。</p>
-<figure data-type="image" tabindex="1"><img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=214869129,647308798&amp;fm=26&amp;gp=0.jpg" alt="" loading="lazy"></figure>
-<p>就是这样。如果断网，上面就会显示出小恐龙，按一下上或下键即可操作它玩游戏了！</p>
-<p>在Google Chrome浏览器上，进入网站<code>chrome://dino</code>即可游玩游戏。或者也可以断网。<s>不过这不值得</s>。</p>
-<p>如题所说，Dino Run游戏中，我们可以<strong>开外挂</strong>。</p>
-<p>首先，右键点击Google Chrome，选择“<strong>检查</strong>”/“<strong>审查元素</strong>”（或者也可以按F12键）；</p>
-<p>右方就会出现写程序的面板，选择<strong>Resources</strong>；</p>
-<p>接下来就是我们的操作了。</p>
-<h2 id="1不死挂">1.不死挂</h2>
-<pre><code>Runner.instance_.gameOver=function(){};
-</code></pre>
-<p>在Resources写代码处，复制一个这样的代码，然后关闭检查，重新开一局游戏即可体验。</p>
-<p><strong>效果</strong>：可穿过障碍物</p>
-<p><strong>原理</strong>：清空游戏的中断逻辑，也就是说将判断死亡函数清空，做到无敌效果。</p>
-<h2 id="2加分挂">2.加分挂</h2>
-<pre><code>var hackScore=0;
-
-Object.defineProperty(Runner.instance_,&quot;distanceRan&quot;,{get:function(){return hackScore},set:function(a){return hackScore=a+Math.floor(1E3*Math.random())},configurable:!0,enumerable:!0});
-</code></pre>
-<p><strong>效果</strong>：获取分数的速度增大1000倍。也可以调整代码中的数字（1E3），调节分数增长速度。</p>
-<p><strong>原理</strong>：ES5 有一个很古老的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><mi>P</mi><mi>I</mi></mrow><annotation encoding="application/x-tex">API</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">A</span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mord mathdefault" style="margin-right:0.07847em;">I</span></span></span></span>， <code>Object.defineProperty()</code>，借助这个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><mi>P</mi><mi>I</mi></mrow><annotation encoding="application/x-tex">API</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">A</span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mord mathdefault" style="margin-right:0.07847em;">I</span></span></span></span>，我们能够轻易的修改现有对象上的属性，配合重新定义对象具体内容的 <code>getter</code>、<code>setter</code> 描述符，可以做到对于属性的劫持操作。</p>
-<h2 id="3自动挂">3.自动挂</h2>
-<pre><code>function TrexRunnerBot(){function f(){Runner().onKeyDown(d);setTimeout(function(){Runner().onKeyUp(d)},500)}var b=function(a){return{keyCode:a,preventDefault:function(){}}},c=b(38),d=b(40),e=b(32);Runner().playing||(Runner().onKeyDown(e),setTimeout(function(){Runner().onKeyUp(e)},500));return{conquerTheGame:function(){if(Runner&amp;&amp;Runner().horizon.obstacles[0]){var a=Runner().horizon.obstacles[0];if((!a.typeConfig||&quot;SNACK&quot;!==a.typeConfig.type)&amp;&amp;50!==a.yPos&amp;&amp;a.xPos&lt;=18*Runner().currentSpeed)if(50=== a.yPos)f();else{var b=Runner().horizon.obstacles[1];if(b&amp;&amp;b.xPos-a.xPos&lt;=42*Runner().currentSpeed)Runner().onKeyDown(c),Runner().onKeyUp(c);else Runner().onKeyDown(c)}}}}}var bot=TrexRunnerBot(),botInterval=setInterval(bot.conquerTheGame,2);
-</code></pre>
-<p><strong>效果</strong>：自动跳跃，躲避，不需人工操作</p>
-<p><strong>原理</strong>：通过修改跳跃函数，计时器的操作来实现自动化。</p>
-<p>这个外挂是基于计时器进行距离计算并模拟用户操作的，当你获得很高很高的分数之后，障碍物推进速度过快，一旦你进行窗口的来回切换，游戏进行暂停和游玩的状态切换，很大概率上操作会延时，导致游戏失败。</p>
+				<h3 id="考试概况">考试概况</h3>
+<p><strong>题目</strong>：3题，NOIP提高组第一天难度。</p>
+<p><strong>平均难度</strong>：提高 ---- 省选-。</p>
+<p><strong>各题详细信息</strong>：</p>
+<ul>
+<li>
+<p>第一题</p>
+<ul>
+<li>得分：50</li>
+<li>正解：DP+斜率优化</li>
+<li>难度：省选-</li>
+</ul>
+</li>
+<li>
+<p>第二题</p>
+<ul>
+<li>得分：100</li>
+<li>正解：分块维护</li>
+<li>难度：提高</li>
+</ul>
+</li>
+<li>
+<p>第三题</p>
+<ul>
+<li>得分：40</li>
+<li>正解：树上遍历+DP</li>
+<li>难度：普及+/提高-</li>
+</ul>
+</li>
+</ul>
+<h3 id="考试记录">考试记录</h3>
+<p>这次考试是唯一一次我之前就知道的考试。<s>哈哈哈哈哈哈哈！！！</s></p>
+<p>可是我还是没有复习。所以在听到别人说今天考试时，我还是很慌的。</p>
+<p>同往常一样，老师<s>流畅地</s>发下了考题的PDF，并警告我们不能说话。<s>这里我的感受，可以参见我之前的考试记录。</s></p>
+<p>好吧，不能说话就不说，首先看题。第一题，一看就想到了DP方程，不过是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msup><mi>N</mi><mn>2</mn></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">O(N^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>算法，连部分数据都过不了。我问了一下老师<s>没错，考试的时候可以问</s>，老师说只有一个数据点的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>&lt;</mo><mo>=</mo><mn>1000</mn></mrow><annotation encoding="application/x-tex">n&lt;=1000</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mord">0</span><span class="mord">0</span></span></span></span>，也就是我只能得10分。QAQ</p>
+<p>肯定要优化。那么我们先不看这道题。YLX（大巨佬）说第2，3题都是原题，我就看了。发现第二题不就是“弹飞绵羊”吗？这是福利啊！！！</p>
+<p>思路都不用说了，前几天我刚做过。切。耗时20min，期望得分100。此时，DCX（大巨佬）切了T1。%%%</p>
+<p>好，一切顺利，来看第三题。看完题面......貌似做过，<s>不过忘了是哪一题了</s>。只能再推一遍了。一种最简单的方法：题目给的就是一棵树，遍历求最大值，再对于每一棵子树搞一遍就行了。</p>
+<p>然后我就写了一个代码。虽然我不确定这是不是正解，但是我还是应该得一点分的。</p>
+<p>只有第一题了！首先摆出一个式子，拆开，合并。发现等式右边是具有单调性的，那么斜率是可以办到的，直接开写。<s>然而，我想错了</s>。</p>
+<p>我大概过了45分钟才发现有错。此时YLX（大巨佬）也快写完了。%%%</p>
+<p>重新推了一遍式子后，发现队列中的数不是连续的。。。QAQ最后也是正确的推出来了，代码不难，编码+调试大概30min，期望得分100。</p>
+<p>然后......还有15分钟。<s>开始乱搞</s>。</p>
+<p><s>首先，将云课堂提交到云课堂中。</s></p>
+<p>终于！<s>万恶的</s>考试终结了，老师当场评测。得分50+100+40，排名第2。</p>
+<p>YLX大巨佬100+30+70排名第一。%%%</p>
+<h3 id="考后记录">考后记录</h3>
+<p>老师把我第一题的一个数组的<code>long double</code>改成了<code>long long</code>，然后过了。what？！</p>
+<h3 id="考试总结">考试总结</h3>
+<p>我的DP真的什么都不是。</p>
 
 							</div>
 	<div class="wow bounceInDown vt-post-tags">
  
-				<a href="https://PeppaKing8.github.io/tag/M0m6BMNsj/" rel="tag">Fun</a>	
+				<a href="https://PeppaKing8.github.io/tag/y5S_vweOI/" rel="tag">Test/Contest Note</a>	
+				 
+				<a href="https://PeppaKing8.github.io/tag/2NkZlbOtF/" rel="tag">OI</a>	
 				 
 					</div>						
 <nav class="navigation3 post-navigation3" role="navigation">
 		
 		<div class="nav-links3">
       
-		<div class="wow bounceInLeft nav-previous3"><a href="https://PeppaKing8.github.io/post/Writer-Information/" rel="prev"> 关于作者</a></div>
+		<div class="wow bounceInLeft nav-previous3"><a href="https://PeppaKing8.github.io/post/luo-gu-p6102-eer2e-yun-suan-ti-jie/" rel="prev"> 洛谷P6102 【[EER2]谔运算】题解</a></div>
 		 
 		 
-		<div class="wow bounceInRight nav-next3"><a href="https://PeppaKing8.github.io/post/san-jiao-han-shu/" rel="next"> 三角函数</a></div>
+		<div class="wow bounceInRight nav-next3"><a href="https://PeppaKing8.github.io/post/2019ACSL-1/" rel="next"> 2019年ACSL第一轮游记</a></div>
 		
 		</div>
 	</nav>
