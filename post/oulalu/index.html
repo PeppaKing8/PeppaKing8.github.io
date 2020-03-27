@@ -1,0 +1,594 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta HTTP-EQUIV="pragma" CONTENT="no-cache"> 
+<meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate"> 
+<meta HTTP-EQUIV="expires" CONTENT="0"> 
+<title>欧拉路径与哈密尔顿环 | User Unknown | WXB&#39;s blog.</title>	
+
+<link rel="stylesheet" href="https://PeppaKing8.github.io/styles/main.css">
+<script type="text/javascript">
+function getCSS()
+{
+        datetoday = new Date();
+        timenow=datetoday.getTime();
+        datetoday.setTime(timenow);
+        thehour = datetoday.getHours();
+
+        if (thehour<6)
+
+            display = "https://PeppaKing8.github.io/media/css/night.css";
+
+       else if (thehour>20)
+
+            display = "https://PeppaKing8.github.io/media/css/night.css";   
+
+        else if (thehour>6)
+           
+            display = "https://PeppaKing8.github.io/media/css/day.css";
+
+        else if (thehour<20)
+
+            display = "https://PeppaKing8.github.io/media/css/day.css";
+      
+
+var css = '<';
+        css+='link rel="stylesheet" href='+display+' \/';
+        css+='>';
+        document.write(css);
+}
+</script>
+<link href="https://fonts.googleapis.com/css?family=Dancing+Script|Liu+Jian+Mao+Cao&display=swap" rel="stylesheet">
+<link href="https://at.alicdn.com/t/font_1306644_jwtuc2zzbrd.css" rel="stylesheet" />
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<script type='text/javascript' src='https://PeppaKing8.github.io/media/scripts/script.js'></script>
+<link href="https://cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet" />
+  <script src="https://cdn.bootcss.com/wow/1.1.2/wow.min.js"></script>
+  <script src="https://cdn.bootcss.com/highlight.js/9.15.8/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <script>wow=new WOW({boxClass:'wow',animateClass:'animated',offset:0,mobile:true,live:true});wow.init();</script>
+
+<script type="text/javascript">
+window.onload=getCSS();
+</script>
+
+
+ 	
+</head>
+<body class="post-template-default single single-post postid-70 single-format-standard">
+    <div id="wrapper">
+        
+			
+		<header id="header" class="site-header" 
+		
+		>
+			<div class="site-branding">
+									<h1 class="site-title"><a href="https://PeppaKing8.github.io" rel="home">User Unknown | WXB&#39;s blog.</a></h1>
+										
+					<h2 class="site-description">既然我已经踏上这条道路，那么，任何东西都不会妨碍我沿着这条路走下去。| Nothing could prevent me from following my favourate road.</h2>
+										
+							</div>
+			<nav id="nav-wrapper">
+				<div class="container">
+					<div class="nav-toggle">
+						<div class="bars">
+							<div class="bar"></div>
+							<div class="bar"></div>
+							<div class="bar"></div>
+						</div>
+					</div>
+					<div class="clear"></div>
+					<ul id="" class="dove">
+		 
+     			
+<li>
+	 
+	<a  href="/"> 首页</a></li>
+	
+    
+     			
+<li>
+	 
+	<a  href="/archives"> 归档文章</a></li>
+	
+    
+     			
+<li>
+	 
+	<a  href="https://PeppaKing8.github.io/post/Writer-Information"> 关于作者</a></li>
+	
+    
+
+</ul>
+</li>		
+		
+</ul>				</div>
+			</nav>
+						<div class="jingge">
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        </header>
+
+		<div id="content" class="container">
+			<div class="row">
+	<div class="col-md-8 site-main">
+				
+<article id="post-70" class="post-70 post type-post status-publish format-standard hentry category-5 tag-10 tag-9 tag-11">
+
+	
+	                      
+		<div class="entry-content">
+			<h1 class="wow swing entry-title">欧拉路径与哈密尔顿环</h1>
+<div class="entry-meta">
+<div class="wow bounce">
+	<i class="iconfont icon-rili"> <time class="lately-a" datetime="2020-02-25 17:26:33" itemprop="datePublished" pubdate="">2020-02-25</time></i>
+	          </div>
+			
+</span>
+													 
+		</div>
+                  
+			<div class="wow slideInLeft entry-summary song">
+				<h2 id="1定义">1.定义：</h2>
+<p><strong>奇点</strong>        度数为奇数的点</p>
+<p><strong>欧拉路径</strong>    一笔画路径</p>
+<p><strong>欧拉回路</strong>    一笔画且能回到起点的路径</p>
+<p><strong>欧拉图</strong>      图<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">G</span></span></span></span>能一笔画而且可以回到起点</p>
+<p><strong>半欧拉图</strong>    图<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">G</span></span></span></span>能一笔画但路径的起点和终点不相同</p>
+<p><strong>哈密尔顿环</strong>  指不重复走过所有的点，最后还能回到起点的回路</p>
+<h2 id="2欧拉图半欧拉图的判定">2.欧拉图/半欧拉图的判定：</h2>
+<ul>
+<li>无向图的判定：</li>
+</ul>
+<p><strong>欧拉图</strong>     <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">G</span></span></span></span>联通且所有顶点的度均为偶数</p>
+<p><strong>半欧拉图</strong>   <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">G</span></span></span></span>联通且有两个顶点的度为奇数，其他为偶数</p>
+<ul>
+<li>有向图的判定：</li>
+</ul>
+<p><strong>欧拉图</strong>  <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">G</span></span></span></span>的基图联通且所有顶点的入度=出度</p>
+<p><strong>半欧拉图</strong>   <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">G</span></span></span></span>的基图联通且存在顶点<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span>的入度比出度大<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span></span></span></span>的入度比出度小<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>，其他所有顶点的入度<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>=</mo></mrow><annotation encoding="application/x-tex">=</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span></span></span></span>出度</p>
+<p><em>（基图：忽略有向图所有边的方向得到的无向图）</em></p>
+<h2 id="3欧拉路径欧拉回路的查找算法">3.欧拉路径/欧拉回路的查找算法：</h2>
+<p><strong>1）暴力算法</strong></p>
+<p>深度优先遍历，用邻接矩阵表示图，当顶点数和边数都很小的话可行。</p>
+<p>若寻找欧拉回路，从任意一个点开始遍历；若寻找欧拉路径 ，则从一个奇点开始<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>f</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">dfs</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">s</span></span></span></span>。</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>f</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">dfs</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">s</span></span></span></span>时，如果所有边都被遍历，就返回路径；若否则枚举与当前节点连接的未标记的边遍历。</p>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int N=25; 
+int n,m;
+bool vis[N][N];
+int path[N&lt;&lt;1];
+void dfs(int pos,int way){
+	if(way==m+2){
+		for(int i=1;i&lt;way;i++) printf(&quot;%d &quot;,path[i]);
+		printf(&quot;\n&quot;);
+		return ;
+	}
+	for(int i=1;i&lt;=n;i++){
+		if(i==pos) continue;
+		if((!vis[pos][i])||(!vis[i][pos])) continue;
+		vis[pos][i]=false;vis[i][pos]=false;
+		path[way]=i;
+		dfs(i,way+1);
+		vis[pos][i]=true;vis[i][pos]=true;
+	}
+}
+int main(){
+	scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
+	if(n+1&gt;m) return 0;
+	for(int i=1;i&lt;=m;i++){
+		int u,v;
+		scanf(&quot;%d%d&quot;,&amp;u,&amp;v);
+		vis[u][v]=true;
+		vis[v][u]=true;
+	}
+	path[1]=1;
+	dfs(1,2);
+	return 0;
+} 
+</code></pre>
+<p><strong>2）Fleury算法</strong> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>m</mi><mo>+</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(m+n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></p>
+<p>本质思路是：考虑到欧拉环的两个性质（见“5.欧拉图的性质”），我们可以只遍历一遍就可以找到一个欧拉环。首先随便找一个环，显然它的欧拉路径可求。再在剩下的图中找欧拉路径，这样递归下去，最后一个一个合并，得到最终的欧拉路径。</p>
+<p>用两个栈维护答案，一个是<strong>搜索栈</strong>，表示搜索顺序；一个是<strong>结果栈</strong>，用来记录结果。</p>
+<p>这里我们考虑找一条欧拉路径。从一个奇点开始搜索，先把这个点压入栈，在类似dfs搜索与这个点相连的点并删去连接边，直到搜到一个已经没有出度的点为止。此时不断弹出栈，将弹出的点加入结果栈中，直到有一个点还有出度。此时继续搜索即可。</p>
+<p>最后，结果栈中的数，就是一条欧拉路径遍历的点。</p>
+<p>下面的代码是用邻接表建边，如果要找出字典序最小的一组遍历，要用邻接矩阵。</p>
+<p>这种维护方法，本质上和思路一样。直到有一个点没有出度，就是找到了一个环。不断出栈是为了找到这个环和其他边的连接点。</p>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int N=200005;
+int n,m;
+struct Edge{
+	int u,v;
+	int next;
+	bool vis;
+}edge[N&lt;&lt;1];
+int head[N],tot=0;
+int outd[N];
+int conn[N&lt;&lt;1];
+void add_edge(int u,int v){
+	outd[u]++;tot++;
+	edge[tot].u=u;
+	edge[tot].v=v;
+	edge[tot].next=head[u];
+	edge[tot].vis=false;
+	head[u]=tot;
+}
+stack&lt;int&gt;q,ans;
+int main(){
+	scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
+	for(int i=1;i&lt;=m;i++){
+		int u,v;
+		scanf(&quot;%d%d&quot;,&amp;u,&amp;v);
+		add_edge(u,v);add_edge(v,u);
+		conn[tot]=tot-1;conn[tot-1]=tot;
+	}
+	for(int i=1;i&lt;=n;i++){
+		if(outd[i]%2==1){
+			q.push(i);
+			break;
+		}
+	}
+	while(!q.empty()){
+		int t=q.top();q.pop();
+		if(outd[t]==0) ans.push(t);
+		else{
+			q.push(t);
+			for(int i=head[t];i;i=edge[i].next){
+				if(edge[i].vis==true||edge[conn[i]].vis==true) continue;
+				q.push(edge[i].v);
+				outd[t]--;outd[edge[i].v]--;
+				edge[i].vis=true;edge[conn[i]].vis=true;
+				break;
+			}
+		}
+	}
+	while(!ans.empty()){
+		printf(&quot;%d &quot;,ans.top());ans.pop();
+	}
+	return 0;
+}
+</code></pre>
+<h2 id="4哈密尔顿环的查找算法">4.哈密尔顿环的查找算法：</h2>
+<p><strong>暴力算法</strong>:</p>
+<p>利用深度优先搜索（<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>f</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">dfs</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">s</span></span></span></span>）即可。</p>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+int n,m;
+const int N=25;
+bool vis[N];
+bool w[N][N];
+int tot=0;
+int path[N];
+void dfs(int pos,int way){
+	if(way==n+1&amp;&amp;pos==1){
+		tot++;
+		for(int i=1;i&lt;way;i++) printf(&quot;%d &quot;,path[i]);
+		printf(&quot;1\n&quot;);
+		return ;
+	}
+	path[way]=pos;
+	for(int i=1;i&lt;=n;i++){
+		if(i==pos) continue;
+		if(!w[pos][i]) continue;
+		if(vis[i]) continue;
+		vis[i]=true;
+		dfs(i,way+1);
+		vis[i]=false;
+}
+int main(){
+	scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
+	for(int i=1;i&lt;=m;i++){
+		int u,v;
+		scanf(&quot;%d%d&quot;,&amp;u,&amp;v);
+		w[u][v]=true;
+		w[v][u]=true;
+	}
+	dfs(1,1);
+	printf(&quot;%d\n&quot;,tot);
+	return 0;
+}
+</code></pre>
+<p><strong>注意：查找哈密尔顿环没有更好的算法，因为此问题被证明为NPC问题。</strong></p>
+<h2 id="5欧拉图的性质">5.欧拉图的性质：</h2>
+<p>1)设<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi></mrow><annotation encoding="application/x-tex">C</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span></span></span></span>是欧拉图<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">G</span></span></span></span>的一个简单回路,将<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi></mrow><annotation encoding="application/x-tex">C</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span></span></span></span>中的边从<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">G</span></span></span></span>中删去得到<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>G</mi><mo mathvariant="normal">′</mo></msup></mrow><annotation encoding="application/x-tex">G&#x27;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.751892em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">G</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span>,则<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>G</mi><mo mathvariant="normal">′</mo></msup></mrow><annotation encoding="application/x-tex">G&#x27;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.751892em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">G</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span>的每一个极大连通子图都有一条欧拉回路。</p>
+<p>2)设<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>C</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>C</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">C_1,C_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">G</span></span></span></span>的两个没有公共边但至少有一个公共顶点的简单回路,则<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>C</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>C</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">C_1,C_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>可以合并成简单回路<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>C</mi><mo mathvariant="normal">′</mo></msup></mrow><annotation encoding="application/x-tex">C&#x27;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.751892em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span>。</p>
+
+							</div>
+	<div class="wow bounceInDown vt-post-tags">
+ 
+				<a href="https://PeppaKing8.github.io/tag/_CwYvBOj8/" rel="tag">Course</a>	
+				 
+				<a href="https://PeppaKing8.github.io/tag/Ad85aQKU0/" rel="tag">Independent Creation</a>	
+				 
+				<a href="https://PeppaKing8.github.io/tag/2NkZlbOtF/" rel="tag">OI</a>	
+				 
+					</div>						
+<nav class="navigation3 post-navigation3" role="navigation">
+		
+		<div class="nav-links3">
+      
+		<div class="wow bounceInLeft nav-previous3"><a href="https://PeppaKing8.github.io/post/sanjiaohanshu/" rel="prev"> 三角函数</a></div>
+		 
+		 
+		<div class="wow bounceInRight nav-next3"><a href="https://PeppaKing8.github.io/post/juanlaoti/" rel="next"> 奆佬题</a></div>
+		
+		</div>
+	</nav>
+	<div class="wow rollIn author-info" style="visibility: visible; animation-name: rollIn;">
+	<div class="author-avatar pull-left"><img src="https://PeppaKing8.github.io/images/avatar.png" ></div>
+ 
+	<div class="author-description"><div class="author-title"><div class="author-link" rel="author">用户未知 | User Unknown</div></div>
+
+
+	<p class="author-bio">Stay hungry, stay foolish.</p></div></div>
+	
+		</div>
+		
+ 
+		
+</article>
+
+<div id="marlin_lite_about_widget-2" class="wow bounceInUp widget marlin_lite_about_widget" data-wow-delay="0.1s">
+		
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'f9cef8a93edc0400a4ff',
+    clientSecret: 'edee6a7527b3138abcca020207eba11a7463679d',
+    repo: 'peppaking8.github.io',
+    owner: 'User Unknown',
+    admin: ['User Unknown'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+          
+        
+		<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://PeppaKing8.github.io/media/scripts/Valine.min.js'></script>
+
+<div class="comment"></div>
+<script>
+        new Valine({
+            // AV 对象来自上面引入av-min.js(老司机们不要开车➳♡゛扎心了老铁)
+            av: AV, 
+            el: '.comment',
+            lang: 'zh-cn',
+            
+            admin_email:'1315827288@qq.com',
+            
+            
+      emoticon_list: ["吐.png","喷血.png","狂汗.png","不说话.png","汗.png","坐等.png","献花.png","不高兴.png","中刀.png","害羞.png","皱眉.png","小眼睛.png","中指.png","尴尬.png","瞅你.png","想一想.png","中枪.png","得意.png","肿包.png","扇耳光.png","亲亲.png","惊喜.png","脸红.png","无所谓.png","便便.png","愤怒.png","蜡烛.png","献黄瓜.png","内伤.png","投降.png","观察.png","看不见.png","击掌.png","抠鼻.png","邪恶.png","看热闹.png","口水.png","抽烟.png","锁眉.png","装大款.png","吐舌.png","无奈.png","长草.png","赞一个.png","呲牙.png","无语.png","阴暗.png","不出所料.png","咽气.png","期待.png","高兴.png","吐血倒地.png","哭泣.png","欢呼.png","黑线.png","喜极而泣.png","喷水.png","深思.png","鼓掌.png","暗地观察.png"],
+     	
+      	
+          
+      placeholder: '写下你的评论~'
+       
+        });
+    </script> 
+
+
+   
+  
+ 
+
+		</div>
+
+			</div>
+			
+
+
+<div class="tocc col l3 hide-on-med-and-down">
+	
+        <div class="toc-widget">
+			
+            <div class="toc-title"></div>
+			
+            <div id="toc-content">
+			
+			
+			</div>
+        </div>
+    </div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.5.0/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '.entry-summary',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('.entry-summary').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+    });
+</script>										 
+
+ 
+       
+
+
+			</div>
+		</div>
+
+		
+		 	<footer id="colophon" class="site-footer">
+
+			<div class="container">
+	
+				<div class="copyright">Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a><br>Theme:   <a href="https://github.com/shanbufun/gridea-theme-pan" target="_blank" title="Pan"><span>Pan</span></a>.  by <a href="https://shanbu.fun/" target="_blank"  title="山卜方" >Shanbufun</a></div>		
+			</div>
+		
+		</footer>
+
+</div>
+
+<script src="https://cdn.bootcss.com/fitvids/1.2.0/jquery.fitvids.min.js"></script>
+<script type='text/javascript' src='https://PeppaKing8.github.io/media/scripts/marlin-scripts.js'></script>
+ <script src="//tokinx.github.io/lately/lately.min.js"></script>
+  <script>jQuery(document).ready(function(){$.lately({'target':'.lately-a,.lately-b,.lately-c'})});</script>
+  <style type="text/css">a.back_to_top {
+    text-decoration: none;
+    position: fixed;
+    bottom: 40px;
+    right: 30px;
+    background: #f0f0f0;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    line-height: 36px;
+    font-size: 18px;
+    text-align: center;
+    transition-duration: .5s;
+    transition-propety: background-color;
+    display: none;
+}
+
+a.back_to_top span {
+    color: #888;
+}
+
+a.back_to_top:hover {
+    cursor: pointer;
+    background: #dfdfdf;
+}
+
+a.back_to_top:hover span {
+    color: #555;
+}
+
+@media print, screen and (max-width: 580px) {
+    .back_to_top {
+        display: none !important;
+    }
+}
+
+
+
+</style><a id="back_to_top" href="#" class="back_to_top"><span><i class="iconfont icon-xiangshang"></i></span>
+</a>
+
+
+<script>$(document).ready((function(_this) {
+  return function() {
+    var bt;
+    bt = $('#back_to_top');
+    if ($(document).width() > 480) {
+      $(window).scroll(function() {
+        var st;
+        st = $(window).scrollTop();
+        if (st > 30) {
+          return bt.css('display', 'block');
+        } else {
+          return bt.css('display', 'none');
+        }
+      });
+      return bt.click(function() {
+        $('body,html').animate({
+          scrollTop: 0
+        }, 800);
+        return false;
+      });
+    }
+  };
+})(this));
+</script>
+
+		<script data-no-instant>
+    (function ($) {
+        $.extend({
+            adamsOverload: function () {
+                $('.navigation:eq(0)').remove();
+                $("").attr("rel" , "external");
+                $("a[rel='external'],a[rel='external nofollow']").attr("target","_blank");
+                $("a.vi").attr("rel" , "");
+                $.viewImage({
+                    'target'  : 'img',
+                    'exclude' : '.vsmile-icons img,.gallery img',
+                    'delay'   : 300
+                });
+                $.lately({
+                    'target' : '.commentmetadata a,.infos time,.post-list time'
+                });
+                prettyPrint();
+                
+                $('ul.links li a').each(function(){
+                    if($(this).parent().find('.bg').length==0){
+                        $(this).parent().append('<!---<div class="bg" style="background-image:url(https://c3.glgoo.top/s2/favicons?domain='+$(this).attr("href")+')"></div>--->')
+                    }
+                });
+            }
+        });
+    })(jQuery);
+    jQuery.adamsOverload();
+</script>
+
+</body>
+</html>

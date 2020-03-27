@@ -6,7 +6,7 @@
 <meta HTTP-EQUIV="pragma" CONTENT="no-cache"> 
 <meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate"> 
 <meta HTTP-EQUIV="expires" CONTENT="0"> 
-<title>关于作者 | User Unknown | WXB&#39;s blog.</title>	
+<title>Dino Run的高超作弊方法 | User Unknown | WXB&#39;s blog.</title>	
 
 <link rel="stylesheet" href="https://PeppaKing8.github.io/styles/main.css">
 <script type="text/javascript">
@@ -144,10 +144,10 @@ window.onload=getCSS();
 	
 	                      
 		<div class="entry-content">
-			<h1 class="wow swing entry-title">关于作者</h1>
+			<h1 class="wow swing entry-title">Dino Run的高超作弊方法</h1>
 <div class="entry-meta">
 <div class="wow bounce">
-	<i class="iconfont icon-rili"> <time class="lately-a" datetime="2020-02-25 19:18:50" itemprop="datePublished" pubdate="">2020-02-25</time></i>
+	<i class="iconfont icon-rili"> <time class="lately-a" datetime="2020-02-25 18:08:08" itemprop="datePublished" pubdate="">2020-02-25</time></i>
 	          </div>
 			
 </span>
@@ -155,27 +155,48 @@ window.onload=getCSS();
 		</div>
                   
 			<div class="wow slideInLeft entry-summary song">
-				<ul>
-<li>是一个蒟蒻。</li>
-<li>喜欢 OI&amp;Math。</li>
-<li>没有成就。</li>
-<li>温顺，善良，调皮又可爱的弱智少年。</li>
-</ul>
+				<p><strong>Dino Run</strong>是一个在谷歌浏览器中，断网后仍然可以游玩的休闲游戏。游戏规则是，使用上下键（分别代表跳跃和低头），操作小恐龙奔跑，躲避路上的障碍（仙人掌和鸟）。</p>
+<figure data-type="image" tabindex="1"><img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=214869129,647308798&amp;fm=26&amp;gp=0.jpg" alt="" loading="lazy"></figure>
+<p>就是这样。如果断网，上面就会显示出小恐龙，按一下上或下键即可操作它玩游戏了！</p>
+<p>在Google Chrome浏览器上，进入网站<code>chrome://dino</code>即可游玩游戏。或者也可以断网。<s>不过这不值得</s>。</p>
+<p>如题所说，Dino Run游戏中，我们可以<strong>开外挂</strong>。</p>
+<p>首先，右键点击Google Chrome，选择“<strong>检查</strong>”/“<strong>审查元素</strong>”（或者也可以按F12键）；</p>
+<p>右方就会出现写程序的面板，选择<strong>Resources</strong>；</p>
+<p>接下来就是我们的操作了。</p>
+<h2 id="1不死挂">1.不死挂</h2>
+<pre><code>Runner.instance_.gameOver=function(){};
+</code></pre>
+<p>在Resources写代码处，复制一个这样的代码，然后关闭检查，重新开一局游戏即可体验。</p>
+<p><strong>效果</strong>：可穿过障碍物</p>
+<p><strong>原理</strong>：清空游戏的中断逻辑，也就是说将判断死亡函数清空，做到无敌效果。</p>
+<h2 id="2加分挂">2.加分挂</h2>
+<pre><code>var hackScore=0;
+
+Object.defineProperty(Runner.instance_,&quot;distanceRan&quot;,{get:function(){return hackScore},set:function(a){return hackScore=a+Math.floor(1E3*Math.random())},configurable:!0,enumerable:!0});
+</code></pre>
+<p><strong>效果</strong>：获取分数的速度增大1000倍。也可以调整代码中的数字（1E3），调节分数增长速度。</p>
+<p><strong>原理</strong>：ES5 有一个很古老的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><mi>P</mi><mi>I</mi></mrow><annotation encoding="application/x-tex">API</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">A</span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mord mathdefault" style="margin-right:0.07847em;">I</span></span></span></span>， <code>Object.defineProperty()</code>，借助这个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><mi>P</mi><mi>I</mi></mrow><annotation encoding="application/x-tex">API</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">A</span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mord mathdefault" style="margin-right:0.07847em;">I</span></span></span></span>，我们能够轻易的修改现有对象上的属性，配合重新定义对象具体内容的 <code>getter</code>、<code>setter</code> 描述符，可以做到对于属性的劫持操作。</p>
+<h2 id="3自动挂">3.自动挂</h2>
+<pre><code>function TrexRunnerBot(){function f(){Runner().onKeyDown(d);setTimeout(function(){Runner().onKeyUp(d)},500)}var b=function(a){return{keyCode:a,preventDefault:function(){}}},c=b(38),d=b(40),e=b(32);Runner().playing||(Runner().onKeyDown(e),setTimeout(function(){Runner().onKeyUp(e)},500));return{conquerTheGame:function(){if(Runner&amp;&amp;Runner().horizon.obstacles[0]){var a=Runner().horizon.obstacles[0];if((!a.typeConfig||&quot;SNACK&quot;!==a.typeConfig.type)&amp;&amp;50!==a.yPos&amp;&amp;a.xPos&lt;=18*Runner().currentSpeed)if(50=== a.yPos)f();else{var b=Runner().horizon.obstacles[1];if(b&amp;&amp;b.xPos-a.xPos&lt;=42*Runner().currentSpeed)Runner().onKeyDown(c),Runner().onKeyUp(c);else Runner().onKeyDown(c)}}}}}var bot=TrexRunnerBot(),botInterval=setInterval(bot.conquerTheGame,2);
+</code></pre>
+<p><strong>效果</strong>：自动跳跃，躲避，不需人工操作</p>
+<p><strong>原理</strong>：通过修改跳跃函数，计时器的操作来实现自动化。</p>
+<p>这个外挂是基于计时器进行距离计算并模拟用户操作的，当你获得很高很高的分数之后，障碍物推进速度过快，一旦你进行窗口的来回切换，游戏进行暂停和游玩的状态切换，很大概率上操作会延时，导致游戏失败。</p>
 
 							</div>
 	<div class="wow bounceInDown vt-post-tags">
  
-				<a href="https://PeppaKing8.github.io/tag/Ya_K6ib-4/" rel="tag">Intro/Daily Notes</a>	
+				<a href="https://PeppaKing8.github.io/tag/M0m6BMNsj/" rel="tag">Fun</a>	
 				 
 					</div>						
 <nav class="navigation3 post-navigation3" role="navigation">
 		
 		<div class="nav-links3">
       
-		<div class="wow bounceInLeft nav-previous3"><a href="https://PeppaKing8.github.io/post/AT5307/" rel="prev"> 洛谷AT5307 Count Order 题解</a></div>
+		<div class="wow bounceInLeft nav-previous3"><a href="https://PeppaKing8.github.io/post/Writer-Information/" rel="prev"> 关于作者</a></div>
 		 
 		 
-		<div class="wow bounceInRight nav-next3"><a href="https://PeppaKing8.github.io/post/Dino-Run/" rel="next"> Dino Run的高超作弊方法</a></div>
+		<div class="wow bounceInRight nav-next3"><a href="https://PeppaKing8.github.io/post/sanjiaohanshu/" rel="next"> 三角函数</a></div>
 		
 		</div>
 	</nav>

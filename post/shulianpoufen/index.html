@@ -1,0 +1,813 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta HTTP-EQUIV="pragma" CONTENT="no-cache"> 
+<meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate"> 
+<meta HTTP-EQUIV="expires" CONTENT="0"> 
+<title>树链剖分 | User Unknown | WXB&#39;s blog.</title>	
+
+<link rel="stylesheet" href="https://PeppaKing8.github.io/styles/main.css">
+<script type="text/javascript">
+function getCSS()
+{
+        datetoday = new Date();
+        timenow=datetoday.getTime();
+        datetoday.setTime(timenow);
+        thehour = datetoday.getHours();
+
+        if (thehour<6)
+
+            display = "https://PeppaKing8.github.io/media/css/night.css";
+
+       else if (thehour>20)
+
+            display = "https://PeppaKing8.github.io/media/css/night.css";   
+
+        else if (thehour>6)
+           
+            display = "https://PeppaKing8.github.io/media/css/day.css";
+
+        else if (thehour<20)
+
+            display = "https://PeppaKing8.github.io/media/css/day.css";
+      
+
+var css = '<';
+        css+='link rel="stylesheet" href='+display+' \/';
+        css+='>';
+        document.write(css);
+}
+</script>
+<link href="https://fonts.googleapis.com/css?family=Dancing+Script|Liu+Jian+Mao+Cao&display=swap" rel="stylesheet">
+<link href="https://at.alicdn.com/t/font_1306644_jwtuc2zzbrd.css" rel="stylesheet" />
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<script type='text/javascript' src='https://PeppaKing8.github.io/media/scripts/script.js'></script>
+<link href="https://cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet" />
+  <script src="https://cdn.bootcss.com/wow/1.1.2/wow.min.js"></script>
+  <script src="https://cdn.bootcss.com/highlight.js/9.15.8/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <script>wow=new WOW({boxClass:'wow',animateClass:'animated',offset:0,mobile:true,live:true});wow.init();</script>
+
+<script type="text/javascript">
+window.onload=getCSS();
+</script>
+
+
+ 	
+</head>
+<body class="post-template-default single single-post postid-70 single-format-standard">
+    <div id="wrapper">
+        
+			
+		<header id="header" class="site-header" 
+		
+		>
+			<div class="site-branding">
+									<h1 class="site-title"><a href="https://PeppaKing8.github.io" rel="home">User Unknown | WXB&#39;s blog.</a></h1>
+										
+					<h2 class="site-description">既然我已经踏上这条道路，那么，任何东西都不会妨碍我沿着这条路走下去。| Nothing could prevent me from following my favourate road.</h2>
+										
+							</div>
+			<nav id="nav-wrapper">
+				<div class="container">
+					<div class="nav-toggle">
+						<div class="bars">
+							<div class="bar"></div>
+							<div class="bar"></div>
+							<div class="bar"></div>
+						</div>
+					</div>
+					<div class="clear"></div>
+					<ul id="" class="dove">
+		 
+     			
+<li>
+	 
+	<a  href="/"> 首页</a></li>
+	
+    
+     			
+<li>
+	 
+	<a  href="/archives"> 归档文章</a></li>
+	
+    
+     			
+<li>
+	 
+	<a  href="https://PeppaKing8.github.io/post/Writer-Information"> 关于作者</a></li>
+	
+    
+
+</ul>
+</li>		
+		
+</ul>				</div>
+			</nav>
+						<div class="jingge">
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        </header>
+
+		<div id="content" class="container">
+			<div class="row">
+	<div class="col-md-8 site-main">
+				
+<article id="post-70" class="post-70 post type-post status-publish format-standard hentry category-5 tag-10 tag-9 tag-11">
+
+	
+	                      
+		<div class="entry-content">
+			<h1 class="wow swing entry-title">树链剖分</h1>
+<div class="entry-meta">
+<div class="wow bounce">
+	<i class="iconfont icon-rili"> <time class="lately-a" datetime="2020-02-25 15:37:21" itemprop="datePublished" pubdate="">2020-02-25</time></i>
+	          </div>
+			
+</span>
+													 
+		</div>
+                  
+			<div class="wow slideInLeft entry-summary song">
+				<h3 id="例题">例题：</h3>
+<p>给定一棵顶点带权的树，有如下的操作。</p>
+<ul>
+<li>
+<p>修改某条路径上所有点的权值</p>
+</li>
+<li>
+<p>询问某条路径上所有点的权值和</p>
+</li>
+</ul>
+<h3 id="分析">分析：</h3>
+<p>如果树是链，那么就可以用区更区查的线段树解决。</p>
+<p>那么树该怎么办？我们用<strong>树链剖分</strong>。</p>
+<h2 id="1什么是树链剖分">1.什么是树链剖分</h2>
+<p>将树上的点按照某种方式组织起来，<strong>剖分成若干的链</strong>，每条链相当于一个<strong>序列</strong>。</p>
+<p>这样，操作的路径可以拆分成某几条链，也就是若干条完整的序列或者某条序列上的一段区间。</p>
+<p>此时，就可以用线段树等处理序列上的区间操作的数据结构解决问题。</p>
+<p>因此，如何恰当的把树剖分成若干条链，是问题的<strong>核心</strong>。</p>
+<h2 id="2剖分思想">2.剖分思想</h2>
+<p><strong>轻重边剖分</strong>是最常用的剖分思想。</p>
+<p>我们用<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>i</mi><mi>z</mi><mi>e</mi><mo>[</mo><mi>u</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">size[u]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.04398em;">z</span><span class="mord mathdefault">e</span><span class="mopen">[</span><span class="mord mathdefault">u</span><span class="mclose">]</span></span></span></span>是以<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span>为根的子树结点个数。令<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span></span></span></span>是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span>儿子中<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>i</mi><mi>z</mi><mi>e</mi></mrow><annotation encoding="application/x-tex">size</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.04398em;">z</span><span class="mord mathdefault">e</span></span></span></span>最大的一个儿子，则称<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>&lt;</mo><mi>u</mi><mo separator="true">,</mo><mi>v</mi><mo>&gt;</mo></mrow><annotation encoding="application/x-tex">&lt;u,v&gt;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.7335400000000001em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">u</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span></span></span></span><br>
+是<strong>重边</strong>，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span></span></span></span>是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span>的<strong>重儿子</strong>。反之，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span>到其余儿子的边为<strong>轻边</strong>。</p>
+<p>那么轻重边有什么性质呢？</p>
+<ul>
+<li>
+<p>如果<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span></span></span></span>是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span>的儿子，且<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>&lt;</mo><mi>u</mi><mo separator="true">,</mo><mi>v</mi><mo>&gt;</mo></mrow><annotation encoding="application/x-tex">&lt;u,v&gt;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.7335400000000001em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">u</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span></span></span></span>是轻边，则<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>i</mi><mi>z</mi><mi>e</mi><mo>[</mo><mi>v</mi><mo>]</mo><mo>&lt;</mo><mo>=</mo><mfrac><mrow><mi>s</mi><mi>i</mi><mi>z</mi><mi>e</mi><mo>[</mo><mi>u</mi><mo>]</mo></mrow><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">size[v]&lt;=\dfrac{size[u]}{2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.04398em;">z</span><span class="mord mathdefault">e</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.113em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.427em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">s</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.04398em;">z</span><span class="mord mathdefault">e</span><span class="mopen">[</span><span class="mord mathdefault">u</span><span class="mclose">]</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span> ；</p>
+</li>
+<li>
+<p>从根结点到某一点<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span></span></span></span>的路径上的轻边个数不多于<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>log</mi><mo>⁡</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">\log n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">n</span></span></span></span>，其中<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>为树的结点数；</p>
+</li>
+<li>
+<p>称某条路径为<strong>重路径</strong>，当且仅当它全部由重边组成。那么对于每个点到根的路径上都有不超过<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>log</mi><mo>⁡</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">\log n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">n</span></span></span></span>条重路径满足它不是任何一个重路径的真子路径；</p>
+</li>
+</ul>
+<p>所以轻重边剖分的好处也就自然而然了。</p>
+<p>可以知道，一个点在且仅在一条重路径上，且一条重路径一定是一条从根节点方向向叶节点方向延申的深度递增的路径。</p>
+<p>操作需要处理的路径<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>&lt;</mo><mi>u</mi><mo separator="true">,</mo><mi>v</mi><mo>&gt;</mo></mrow><annotation encoding="application/x-tex">&lt;u,v&gt;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.7335400000000001em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">u</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span></span></span></span>，只需要分别处理<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi><mo separator="true">,</mo><mi>v</mi></mrow><annotation encoding="application/x-tex">u,v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">u</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span></span></span></span>两点分别到<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>L</mi><mi>C</mi><mi>A</mi><mo>(</mo><mi>u</mi><mo separator="true">,</mo><mi>v</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">LCA(u,v)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">L</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault">A</span><span class="mopen">(</span><span class="mord mathdefault">u</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mclose">)</span></span></span></span>的路径即可。</p>
+<p>一条路径可以分解成最多<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>log</mi><mo>⁡</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">\log n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">n</span></span></span></span>条重路径和最多<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>log</mi><mo>⁡</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">\log n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">n</span></span></span></span>条轻边。对于每个重路径，就相当于一个序列，用<strong>线段树</strong>维护；对于轻边，则可以<strong>直接跳过</strong>，因为轻边的两个端点一定在某两条重路径上。</p>
+<p>综上所述，总体的时间复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n\log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>。</p>
+<h2 id="3代码实现">3.代码实现</h2>
+<p>在实现代码之前，您需要熟练掌握<strong>线段树</strong>的内容。</p>
+<p>由上述，我们可以知道，要维护的东西很多。</p>
+<pre><code>struct Vert{
+	int wei;//权重 
+	int fa;//父亲 
+	int dep;//深度 
+	int size;//子树结点数 
+	int son;//重儿子 
+	int top;//所在重路径顶部结点 
+	int seg;//所在线段树的下标 
+}vert[N];
+</code></pre>
+<p>其中，<code>wei</code>是直接读入的，不需要维护。</p>
+<p>第一遍<code>dfs</code>时，我们需要求出<code>fa,dep,size,son</code>。这是一个基本的树上<code>dfs</code>。</p>
+<pre><code>void dfs1(int u,int fa){
+	vert[u].size=1;
+	vert[u].fa=fa;
+	vert[i].dep=vert[fa].dep+1;
+	int son=0;
+	for(int i=head[u];i;i=edge[i].next){
+		if(edge[i].v==fa) continue;
+		dfs1(edge[i].v,u);
+		vert[u].size+=vert[edge[i].v].size;
+		if(vert[edge[i].v].size&gt;vert[son].size) son=edge[i].v;
+	}
+	vert[u].son=son;
+}
+</code></pre>
+<p>现在要进行第二遍<code>dfs</code>，需要同时求出<code>top</code>和<code>seg</code>。首先，因为需要维护线段树，所以我们建立一个线段树的结构体。每次加进一个线段树，都可以用一个函数<code>add_seg_rev()</code>解决。</p>
+<pre><code>struct Tree{
+	int l,r;
+	int sum,mx;//sum表示和，mx表示最大值
+	int rev;//线段树第x个位置对应的树结点 
+}seg[N&lt;&lt;2];
+void add_seg_rev(int x){
+	seg_num++;
+    vert[x].seg=seg_num;
+    seg[seg_num].rev=x;
+}
+</code></pre>
+<p>做完这些准备操作，就可以进行第二遍<code>dfs</code>了。</p>
+<pre><code>void dfs2(int u){
+	if(vert[u].son&gt;0){
+		add_seg_rev(vert[u].son);
+		vert[vert[u].son].top=vert[u].top;
+		dfs2(vert[u].son);
+	}
+	for(int i=head[u];i;i=edge[i].next){
+		if(vert[edge[i].v].top) continue;
+		add_seg_rev(edge[i].v);
+		vert[edge[i].v].top=edge[i].v;
+		dfs2(edge[i].v);
+	}
+}
+</code></pre>
+<p>需要注意的是，在<code>dfs2</code>之前，还要将根节点插入线段树中。</p>
+<pre><code>	add_seg_rev(1);
+	vert[1].top=1;
+</code></pre>
+<p>在两边<code>dfs</code>之后，我们已经处理好了<code>vert</code>结构体中的所有内容，并且将线段树顺序排好了，现在我们来建树。</p>
+<pre><code>void buildtree(int id,int l,int r){
+	seg[id].l=l;
+	seg[id].r=r;
+	if(l==r){
+		int wei=vert[seg[l].rev].wei;
+		seg[id].mx=wei;
+		seg[id].sum=wei;
+		return ;
+	}
+	int mid=(l+r)&gt;&gt;1;
+	buildtree(id&lt;&lt;1,l,mid);
+	buildtree(id&lt;&lt;1|1,mid+1,r);
+	seg[id].sum=seg[id&lt;&lt;1].sum+seg[id&lt;&lt;1|1].sum;
+	seg[id].mx=max(seg[id&lt;&lt;1].mx,seg[id&lt;&lt;1|1].mx);
+}
+</code></pre>
+<p>然后，就是线段树的维护和查询操作了。我们以<a href="https://www.luogu.com.cn/problem/P2590">P2590 树的统计</a>为例，这里是单点更新，区间查询。我们需要同时维护区间和和区间最大值。</p>
+<pre><code>struct Result{//用来记录查询的答案，捆绑返回
+	int ok;
+    int sum;
+    int mx;
+};
+void update(int id,int pos,int val){
+	if((pos&lt;seg[id].l)||(pos&gt;seg[id].r)) return ;
+	if((seg[id].l==seg[id].r)&amp;&amp;(seg[id].l==pos)){
+		seg[id].sum=val;
+		seg[id].mx=val;
+		return ;
+	}
+	update(id&lt;&lt;1,pos,val);
+	update(id&lt;&lt;1|1,pos,val);
+	seg[id].sum=seg[id&lt;&lt;1].sum+seg[id&lt;&lt;1|1].sum;
+	seg[id].mx=max(seg[id&lt;&lt;1].mx,seg[id&lt;&lt;1|1].mx);
+} 
+Result merge(Result res1,Result res2){
+	Result res;
+	if(res1.ok&amp;&amp;res2.ok){
+		res.ok=true;
+		res.sum=res1.sum+res2.sum;
+		res.mx=max(res1.mx,res2.mx);
+	}
+	else if(res1.ok) res=res1;
+	else if(res2.ok) res=res2;
+	else res.ok=false;
+	return res;
+}
+Result query(int id,int le,int ri){
+	int l1=max(seg[id].l,le);
+	int r1=min(seg[id].r,ri); 
+	int overlap=r1-l1+1;
+	if(overlap&lt;=0) return (Result){false,0,0};
+	if(overlap&gt;=seg[id].r-seg[id].l+1){
+		Result res;
+		res.ok=true;
+		res.sum=seg[id].sum;
+		res.mx=seg[id].mx;
+		return res;
+	}
+	Result res1=query(id&lt;&lt;1,le,ri);
+	Result res2=query(id&lt;&lt;1|1,le,ri);
+	Result resu=merge(res1,res2);
+	return resu;
+}
+</code></pre>
+<p>最终，就是最后的树链查询了。我们需要做到的是将其分为若干个序列或序列的子序列，再将每一个在线段树上的位置查询一下就可以。</p>
+<pre><code>Result ask(int x,int y){
+	Result res;
+	res.ok=false;
+	int tx=vert[x].top;
+	int ty=vert[y].top;
+	while(tx!=ty){
+		if(vert[tx].dep&lt;vert[ty].dep)
+			swap(x,y),swap(tx,ty);
+		Result res1=query(1,vert[tx].seg,vert[x].seg);
+		res=merge(res,res1);
+		x=vert[tx].fa;
+		tx=vert[x].top;
+        //将x跳到fa[top[x]]，同时更新这段区间的内容
+	}
+	if(vert[x].dep&gt;vert[y].dep) swap(x,y);
+	Result res1=query(1,vert[x].seg,vert[y].seg);
+	res=merge(res,res1);
+    //最后，x和y都在同一个重路径上了，直接用线段树查询即可。
+	return res;
+}
+</code></pre>
+<p>主函数（查询）内容：</p>
+<pre><code>for(int i=1;i&lt;=m;i++){
+	string opt;
+	int x,y;
+	cin&gt;&gt;opt;
+	scanf(&quot;%lld%lld&quot;,&amp;x,&amp;y);
+	if(opt[0]=='C'){
+		update(1,vert[x].seg,y);
+	}
+	else if(opt[1]=='M'){
+		Result res=ask(x,y);
+		printf(&quot;%lld\n&quot;,res.mx);
+	}
+	else{
+		Result res=ask(x,y);
+		printf(&quot;%lld\n&quot;,res.sum);
+	}
+}
+</code></pre>
+<h2 id="4完整代码">4.完整代码</h2>
+<p>以下是<a href="https://www.luogu.com.cn/problem/P2590">P2590 树的统计</a>的完整代码。</p>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+#define int long long
+using namespace std;
+const int N=30005;
+int n,m,s,MOD;
+struct Vert{
+	int wei;//权重 
+	int fa;//父亲 
+	int dep;//深度 
+	int size;//子树结点数 
+	int son;//重儿子 
+	int top;//所在重路径顶部结点 
+	int seg;//所在线段树的下标 
+}vert[N];
+struct Edge{
+	int u,v;
+	int next;
+}edge[N&lt;&lt;1];
+int head[N],tot=0;
+struct Tree{
+	int l,r;
+	int sum,mx;
+	int rev;//线段树第x个位置对应的树结点 
+}seg[N&lt;&lt;2];
+int seg_num;
+struct Result{
+	bool ok;
+	int sum;
+	int mx;
+};
+void add_edge(int u,int v){
+	tot++;
+	edge[tot].u=u;
+	edge[tot].v=v;
+	edge[tot].next=head[u];
+	head[u]=tot;
+}
+void add_seg_rev(int x){
+	seg_num++;
+	vert[x].seg=seg_num;
+	seg[seg_num].rev=x;
+}
+void dfs1(int u,int fa){
+	vert[u].size=1;
+	vert[u].fa=fa;
+	vert[u].dep=vert[fa].dep+1;
+	int son=0;
+	for(int i=head[u];i;i=edge[i].next){
+		if(edge[i].v==fa) continue;
+		dfs1(edge[i].v,u);
+		vert[u].size+=vert[edge[i].v].size;
+		if(vert[edge[i].v].size&gt;vert[son].size) son=edge[i].v;
+	}
+	vert[u].son=son;
+}
+void dfs2(int u){
+	if(vert[u].son&gt;0){
+		add_seg_rev(vert[u].son);
+		vert[vert[u].son].top=vert[u].top;
+		dfs2(vert[u].son);
+	}
+	for(int i=head[u];i;i=edge[i].next){
+		if(vert[edge[i].v].top) continue;
+		add_seg_rev(edge[i].v);
+		vert[edge[i].v].top=edge[i].v;
+		dfs2(edge[i].v);
+	}
+}
+void buildtree(int id,int l,int r){
+	seg[id].l=l;
+	seg[id].r=r;
+	if(l==r){
+		int wei=vert[seg[l].rev].wei;
+		seg[id].mx=wei;
+		seg[id].sum=wei;
+		return ;
+	}
+	int mid=(l+r)&gt;&gt;1;
+	buildtree(id&lt;&lt;1,l,mid);
+	buildtree(id&lt;&lt;1|1,mid+1,r);
+	seg[id].sum=seg[id&lt;&lt;1].sum+seg[id&lt;&lt;1|1].sum;
+	seg[id].mx=max(seg[id&lt;&lt;1].mx,seg[id&lt;&lt;1|1].mx);
+}
+void update(int id,int pos,int val){
+	if((pos&lt;seg[id].l)||(pos&gt;seg[id].r)) return ;
+	if((seg[id].l==seg[id].r)&amp;&amp;(seg[id].l==pos)){
+		seg[id].sum=val;
+		seg[id].mx=val;
+		return ;
+	}
+	update(id&lt;&lt;1,pos,val);
+	update(id&lt;&lt;1|1,pos,val);
+	seg[id].sum=seg[id&lt;&lt;1].sum+seg[id&lt;&lt;1|1].sum;
+	seg[id].mx=max(seg[id&lt;&lt;1].mx,seg[id&lt;&lt;1|1].mx);
+} 
+Result merge(Result res1,Result res2){
+	Result res;
+	if(res1.ok&amp;&amp;res2.ok){
+		res.ok=true;
+		res.sum=res1.sum+res2.sum;
+		res.mx=max(res1.mx,res2.mx);
+	}
+	else if(res1.ok) res=res1;
+	else if(res2.ok) res=res2;
+	else res.ok=false;
+	return res;
+}
+Result query(int id,int le,int ri){
+	int l1=max(seg[id].l,le);
+	int r1=min(seg[id].r,ri); 
+	int overlap=r1-l1+1;
+	if(overlap&lt;=0) return (Result){false,0,0};
+	if(overlap&gt;=seg[id].r-seg[id].l+1){
+		Result res;
+		res.ok=true;
+		res.sum=seg[id].sum;
+		res.mx=seg[id].mx;
+		return res;
+	}
+	Result res1=query(id&lt;&lt;1,le,ri);
+	Result res2=query(id&lt;&lt;1|1,le,ri);
+	Result resu=merge(res1,res2);
+	return resu;
+}
+Result ask(int x,int y){
+	Result res;
+	res.ok=false;
+	int tx=vert[x].top;
+	int ty=vert[y].top;
+	while(tx!=ty){
+		if(vert[tx].dep&lt;vert[ty].dep)
+			swap(x,y),swap(tx,ty);
+		Result res1=query(1,vert[tx].seg,vert[x].seg);
+		res=merge(res,res1);
+		x=vert[tx].fa;
+		tx=vert[x].top;
+	}
+	if(vert[x].dep&gt;vert[y].dep) swap(x,y);
+	Result res1=query(1,vert[x].seg,vert[y].seg);
+	res=merge(res,res1);
+	return res;
+}
+signed main(){
+	scanf(&quot;%lld&quot;,&amp;n);
+	for(int i=1;i&lt;n;i++){
+		int u,v;
+		scanf(&quot;%lld%lld&quot;,&amp;u,&amp;v);
+		add_edge(u,v);
+		add_edge(v,u);
+	}
+	for(int i=1;i&lt;=n;i++) scanf(&quot;%lld&quot;,&amp;vert[i].wei);
+	dfs1(1,0);
+	add_seg_rev(1);
+	vert[1].top=1;
+	dfs2(1);
+	buildtree(1,1,n);
+	scanf(&quot;%lld&quot;,&amp;m);
+	for(int i=1;i&lt;=m;i++){
+		string opt;
+		int x,y;
+		cin&gt;&gt;opt;
+		scanf(&quot;%lld%lld&quot;,&amp;x,&amp;y);
+		if(opt[0]=='C'){
+			update(1,vert[x].seg,y);
+		}
+		else if(opt[1]=='M'){
+			Result res=ask(x,y);
+			printf(&quot;%lld\n&quot;,res.mx);
+		}
+		else{
+			Result res=ask(x,y);
+			printf(&quot;%lld\n&quot;,res.sum);
+		}
+	}
+	exit(0);
+}
+</code></pre>
+
+							</div>
+	<div class="wow bounceInDown vt-post-tags">
+ 
+				<a href="https://PeppaKing8.github.io/tag/_CwYvBOj8/" rel="tag">Course</a>	
+				 
+				<a href="https://PeppaKing8.github.io/tag/Ad85aQKU0/" rel="tag">Independent Creation</a>	
+				 
+				<a href="https://PeppaKing8.github.io/tag/2NkZlbOtF/" rel="tag">OI</a>	
+				 
+					</div>						
+<nav class="navigation3 post-navigation3" role="navigation">
+		
+		<div class="nav-links3">
+      
+		<div class="wow bounceInLeft nav-previous3"><a href="https://PeppaKing8.github.io/post/lca/" rel="prev"> LCA</a></div>
+		 
+		 
+		<div class="wow bounceInRight nav-next3"><a href="https://PeppaKing8.github.io/post/BJOI/" rel="next"> 历年BJOI题目索引</a></div>
+		
+		</div>
+	</nav>
+	<div class="wow rollIn author-info" style="visibility: visible; animation-name: rollIn;">
+	<div class="author-avatar pull-left"><img src="https://PeppaKing8.github.io/images/avatar.png" ></div>
+ 
+	<div class="author-description"><div class="author-title"><div class="author-link" rel="author">用户未知 | User Unknown</div></div>
+
+
+	<p class="author-bio">Stay hungry, stay foolish.</p></div></div>
+	
+		</div>
+		
+ 
+		
+</article>
+
+<div id="marlin_lite_about_widget-2" class="wow bounceInUp widget marlin_lite_about_widget" data-wow-delay="0.1s">
+		
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'f9cef8a93edc0400a4ff',
+    clientSecret: 'edee6a7527b3138abcca020207eba11a7463679d',
+    repo: 'peppaking8.github.io',
+    owner: 'User Unknown',
+    admin: ['User Unknown'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+          
+        
+		<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://PeppaKing8.github.io/media/scripts/Valine.min.js'></script>
+
+<div class="comment"></div>
+<script>
+        new Valine({
+            // AV 对象来自上面引入av-min.js(老司机们不要开车➳♡゛扎心了老铁)
+            av: AV, 
+            el: '.comment',
+            lang: 'zh-cn',
+            
+            admin_email:'1315827288@qq.com',
+            
+            
+      emoticon_list: ["吐.png","喷血.png","狂汗.png","不说话.png","汗.png","坐等.png","献花.png","不高兴.png","中刀.png","害羞.png","皱眉.png","小眼睛.png","中指.png","尴尬.png","瞅你.png","想一想.png","中枪.png","得意.png","肿包.png","扇耳光.png","亲亲.png","惊喜.png","脸红.png","无所谓.png","便便.png","愤怒.png","蜡烛.png","献黄瓜.png","内伤.png","投降.png","观察.png","看不见.png","击掌.png","抠鼻.png","邪恶.png","看热闹.png","口水.png","抽烟.png","锁眉.png","装大款.png","吐舌.png","无奈.png","长草.png","赞一个.png","呲牙.png","无语.png","阴暗.png","不出所料.png","咽气.png","期待.png","高兴.png","吐血倒地.png","哭泣.png","欢呼.png","黑线.png","喜极而泣.png","喷水.png","深思.png","鼓掌.png","暗地观察.png"],
+     	
+      	
+          
+      placeholder: '写下你的评论~'
+       
+        });
+    </script> 
+
+
+   
+  
+ 
+
+		</div>
+
+			</div>
+			
+
+
+<div class="tocc col l3 hide-on-med-and-down">
+	
+        <div class="toc-widget">
+			
+            <div class="toc-title"></div>
+			
+            <div id="toc-content">
+			
+			
+			</div>
+        </div>
+    </div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.5.0/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '.entry-summary',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('.entry-summary').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+    });
+</script>										 
+
+ 
+       
+
+
+			</div>
+		</div>
+
+		
+		 	<footer id="colophon" class="site-footer">
+
+			<div class="container">
+	
+				<div class="copyright">Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a><br>Theme:   <a href="https://github.com/shanbufun/gridea-theme-pan" target="_blank" title="Pan"><span>Pan</span></a>.  by <a href="https://shanbu.fun/" target="_blank"  title="山卜方" >Shanbufun</a></div>		
+			</div>
+		
+		</footer>
+
+</div>
+
+<script src="https://cdn.bootcss.com/fitvids/1.2.0/jquery.fitvids.min.js"></script>
+<script type='text/javascript' src='https://PeppaKing8.github.io/media/scripts/marlin-scripts.js'></script>
+ <script src="//tokinx.github.io/lately/lately.min.js"></script>
+  <script>jQuery(document).ready(function(){$.lately({'target':'.lately-a,.lately-b,.lately-c'})});</script>
+  <style type="text/css">a.back_to_top {
+    text-decoration: none;
+    position: fixed;
+    bottom: 40px;
+    right: 30px;
+    background: #f0f0f0;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    line-height: 36px;
+    font-size: 18px;
+    text-align: center;
+    transition-duration: .5s;
+    transition-propety: background-color;
+    display: none;
+}
+
+a.back_to_top span {
+    color: #888;
+}
+
+a.back_to_top:hover {
+    cursor: pointer;
+    background: #dfdfdf;
+}
+
+a.back_to_top:hover span {
+    color: #555;
+}
+
+@media print, screen and (max-width: 580px) {
+    .back_to_top {
+        display: none !important;
+    }
+}
+
+
+
+</style><a id="back_to_top" href="#" class="back_to_top"><span><i class="iconfont icon-xiangshang"></i></span>
+</a>
+
+
+<script>$(document).ready((function(_this) {
+  return function() {
+    var bt;
+    bt = $('#back_to_top');
+    if ($(document).width() > 480) {
+      $(window).scroll(function() {
+        var st;
+        st = $(window).scrollTop();
+        if (st > 30) {
+          return bt.css('display', 'block');
+        } else {
+          return bt.css('display', 'none');
+        }
+      });
+      return bt.click(function() {
+        $('body,html').animate({
+          scrollTop: 0
+        }, 800);
+        return false;
+      });
+    }
+  };
+})(this));
+</script>
+
+		<script data-no-instant>
+    (function ($) {
+        $.extend({
+            adamsOverload: function () {
+                $('.navigation:eq(0)').remove();
+                $("").attr("rel" , "external");
+                $("a[rel='external'],a[rel='external nofollow']").attr("target","_blank");
+                $("a.vi").attr("rel" , "");
+                $.viewImage({
+                    'target'  : 'img',
+                    'exclude' : '.vsmile-icons img,.gallery img',
+                    'delay'   : 300
+                });
+                $.lately({
+                    'target' : '.commentmetadata a,.infos time,.post-list time'
+                });
+                prettyPrint();
+                
+                $('ul.links li a').each(function(){
+                    if($(this).parent().find('.bg').length==0){
+                        $(this).parent().append('<!---<div class="bg" style="background-image:url(https://c3.glgoo.top/s2/favicons?domain='+$(this).attr("href")+')"></div>--->')
+                    }
+                });
+            }
+        });
+    })(jQuery);
+    jQuery.adamsOverload();
+</script>
+
+</body>
+</html>

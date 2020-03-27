@@ -1,0 +1,796 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta HTTP-EQUIV="pragma" CONTENT="no-cache"> 
+<meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate"> 
+<meta HTTP-EQUIV="expires" CONTENT="0"> 
+<title>割点与割边 | User Unknown | WXB&#39;s blog.</title>	
+
+<link rel="stylesheet" href="https://PeppaKing8.github.io/styles/main.css">
+<script type="text/javascript">
+function getCSS()
+{
+        datetoday = new Date();
+        timenow=datetoday.getTime();
+        datetoday.setTime(timenow);
+        thehour = datetoday.getHours();
+
+        if (thehour<6)
+
+            display = "https://PeppaKing8.github.io/media/css/night.css";
+
+       else if (thehour>20)
+
+            display = "https://PeppaKing8.github.io/media/css/night.css";   
+
+        else if (thehour>6)
+           
+            display = "https://PeppaKing8.github.io/media/css/day.css";
+
+        else if (thehour<20)
+
+            display = "https://PeppaKing8.github.io/media/css/day.css";
+      
+
+var css = '<';
+        css+='link rel="stylesheet" href='+display+' \/';
+        css+='>';
+        document.write(css);
+}
+</script>
+<link href="https://fonts.googleapis.com/css?family=Dancing+Script|Liu+Jian+Mao+Cao&display=swap" rel="stylesheet">
+<link href="https://at.alicdn.com/t/font_1306644_jwtuc2zzbrd.css" rel="stylesheet" />
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<script type='text/javascript' src='https://PeppaKing8.github.io/media/scripts/script.js'></script>
+<link href="https://cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet" />
+  <script src="https://cdn.bootcss.com/wow/1.1.2/wow.min.js"></script>
+  <script src="https://cdn.bootcss.com/highlight.js/9.15.8/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <script>wow=new WOW({boxClass:'wow',animateClass:'animated',offset:0,mobile:true,live:true});wow.init();</script>
+
+<script type="text/javascript">
+window.onload=getCSS();
+</script>
+
+
+ 	
+</head>
+<body class="post-template-default single single-post postid-70 single-format-standard">
+    <div id="wrapper">
+        
+			
+		<header id="header" class="site-header" 
+		
+		>
+			<div class="site-branding">
+									<h1 class="site-title"><a href="https://PeppaKing8.github.io" rel="home">User Unknown | WXB&#39;s blog.</a></h1>
+										
+					<h2 class="site-description">既然我已经踏上这条道路，那么，任何东西都不会妨碍我沿着这条路走下去。| Nothing could prevent me from following my favourate road.</h2>
+										
+							</div>
+			<nav id="nav-wrapper">
+				<div class="container">
+					<div class="nav-toggle">
+						<div class="bars">
+							<div class="bar"></div>
+							<div class="bar"></div>
+							<div class="bar"></div>
+						</div>
+					</div>
+					<div class="clear"></div>
+					<ul id="" class="dove">
+		 
+     			
+<li>
+	 
+	<a  href="/"> 首页</a></li>
+	
+    
+     			
+<li>
+	 
+	<a  href="/archives"> 归档文章</a></li>
+	
+    
+     			
+<li>
+	 
+	<a  href="https://PeppaKing8.github.io/post/Writer-Information"> 关于作者</a></li>
+	
+    
+
+</ul>
+</li>		
+		
+</ul>				</div>
+			</nav>
+						<div class="jingge">
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        </header>
+
+		<div id="content" class="container">
+			<div class="row">
+	<div class="col-md-8 site-main">
+				
+<article id="post-70" class="post-70 post type-post status-publish format-standard hentry category-5 tag-10 tag-9 tag-11">
+
+	
+	                      
+		<div class="entry-content">
+			<h1 class="wow swing entry-title">割点与割边</h1>
+<div class="entry-meta">
+<div class="wow bounce">
+	<i class="iconfont icon-rili"> <time class="lately-a" datetime="2020-02-25 15:42:44" itemprop="datePublished" pubdate="">2020-02-25</time></i>
+	          </div>
+			
+</span>
+													 
+		</div>
+                  
+			<div class="wow slideInLeft entry-summary song">
+				<h2 id="1割点的定义相关知识和性质">1.割点的定义，相关知识和性质</h2>
+<p>在一个无向图<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">G</span></span></span></span>中，如果有一个<strong>顶点集合</strong>，删除这个顶点集合以及这个集合中所有顶点相关联的边以后，图的连通分量增多，就称这个点集为<strong>割点集合</strong>。特别的，如果<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">G</span></span></span></span>联通，则是删除这个顶点集合以及这个集合中所有顶点相关联的边以后图不再联通的顶点集合。</p>
+<p>如果某个割点集合只含有一个顶点<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>（也即<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>{</mo><mi>x</mi><mo>}</mo></mrow><annotation encoding="application/x-tex">\{x\}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathdefault">x</span><span class="mclose">}</span></span></span></span>是一个割点集合），那么<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>称为一个<strong>割点</strong>。</p>
+<p>在无向连通图<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">G</span></span></span></span>中，如果<strong>点连通度</strong>（最小割点集合的大小）大于1，称该图为<strong>点双连通</strong>。（<code>point biconnected</code>）。<strong>点双连通图不存在割点。</strong></p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>G</mi><mo mathvariant="normal">′</mo></msup></mrow><annotation encoding="application/x-tex">G&#x27;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.751892em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">G</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span>是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">G</span></span></span></span>的子图，并且<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>G</mi><mo mathvariant="normal">′</mo></msup></mrow><annotation encoding="application/x-tex">G&#x27;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.751892em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">G</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span>是点双连通图，则称<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>G</mi><mo mathvariant="normal">′</mo></msup></mrow><annotation encoding="application/x-tex">G&#x27;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.751892em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">G</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span>为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">G</span></span></span></span>的<strong>双连通子图</strong>。如果<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>G</mi><mo mathvariant="normal">′</mo></msup></mrow><annotation encoding="application/x-tex">G&#x27;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.751892em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">G</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span>不是任意一个点双连通子图的子图，则<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>G</mi><mo mathvariant="normal">′</mo></msup></mrow><annotation encoding="application/x-tex">G&#x27;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.751892em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">G</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span>为<strong>点双连通分量</strong>（<code>Biconnected Component,BCC</code>），也叫做<strong>块</strong>。</p>
+<h3 id="割点的性质">割点的性质：</h3>
+<ul>
+<li>
+<p>一个图不只有一个割点。</p>
+</li>
+<li>
+<p>如果<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span>是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">G</span></span></span></span>的一个顶点，则下列条件等价：</p>
+<ul>
+<li>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span>为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">G</span></span></span></span>的一个割点。</p>
+</li>
+<li>
+<p>存在<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">G</span></span></span></span>点集的一个划分<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>{</mo><mi>u</mi><mo>}</mo><mo separator="true">,</mo><mi>V</mi><mo separator="true">,</mo><mi>W</mi></mrow><annotation encoding="application/x-tex">\{u\},V,W</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathdefault">u</span><span class="mclose">}</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">W</span></span></span></span>，满足对于任意的结点<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>v</mi><mo separator="true">,</mo><mi>w</mi></mrow><annotation encoding="application/x-tex">v,w</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span></span></span></span>（其中<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span></span></span></span>在<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>V</mi></mrow><annotation encoding="application/x-tex">V</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">V</span></span></span></span>中，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>w</mi></mrow><annotation encoding="application/x-tex">w</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span></span></span></span>在<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>W</mi></mrow><annotation encoding="application/x-tex">W</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">W</span></span></span></span>中），有<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span>在<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>v</mi><mo separator="true">,</mo><mi>w</mi></mrow><annotation encoding="application/x-tex">v,w</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span></span></span></span>的任意一条边上。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>一个无向连通图中至少有两个点不是割点。</p>
+</li>
+</ul>
+<h3 id="点双连通分量bcc的性质">点双连通分量（<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>B</mi><mi>C</mi><mi>C</mi></mrow><annotation encoding="application/x-tex">BCC</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span></span></span></span>）的性质：</h3>
+<ul>
+<li>
+<p>如果两个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>B</mi><mi>C</mi><mi>C</mi></mrow><annotation encoding="application/x-tex">BCC</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span></span></span></span>有公共点，则这个公共点为割点。</p>
+</li>
+<li>
+<p>两个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>B</mi><mi>C</mi><mi>C</mi></mrow><annotation encoding="application/x-tex">BCC</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span></span></span></span>最多有一个公共点。</p>
+</li>
+<li>
+<p>割点一定属于至少两个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>B</mi><mi>C</mi><mi>C</mi></mrow><annotation encoding="application/x-tex">BCC</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span></span></span></span>，非割点只能属于一个。</p>
+</li>
+<li>
+<p>对于每一个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>B</mi><mi>C</mi><mi>C</mi></mrow><annotation encoding="application/x-tex">BCC</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span></span></span></span>，在<code>dfs</code>搜索树中第一个被发现的顶点要么是树根，要么是整个图的割点。</p>
+</li>
+</ul>
+<h2 id="2割边的定义相关知识和性质">2.割边的定义，相关知识和性质</h2>
+<p>在一个无向连通图<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">G</span></span></span></span>中，如果有一个边集合<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>E</mi></mrow><annotation encoding="application/x-tex">E</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span></span></span></span>，删除这个边集合的所有边以后，图<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">G</span></span></span></span>的连通分量增多（变成不连通），就称这个边集<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>E</mi></mrow><annotation encoding="application/x-tex">E</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span></span></span></span>为<strong>割边集合</strong>。</p>
+<p>如果某个割边集合只含有一个元素<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>&lt;</mo><mi>u</mi><mo separator="true">,</mo><mi>v</mi><mo>&gt;</mo></mrow><annotation encoding="application/x-tex">&lt;u,v&gt;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.7335400000000001em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">u</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span></span></span></span>，则称这条边为<strong>割边/桥</strong>。</p>
+<p>在一个无向连通图G中，如果边连通度大于1，则称G为<strong>边双连通图</strong>。</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>G</mi><mo mathvariant="normal">′</mo></msup></mrow><annotation encoding="application/x-tex">G&#x27;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.751892em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">G</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span>是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">G</span></span></span></span>的子图，并且<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>G</mi><mo mathvariant="normal">′</mo></msup></mrow><annotation encoding="application/x-tex">G&#x27;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.751892em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">G</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span>为边双连通图，则称<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>G</mi><mo mathvariant="normal">′</mo></msup></mrow><annotation encoding="application/x-tex">G&#x27;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.751892em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">G</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span>为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">G</span></span></span></span>的<strong>边双连通子图</strong>。图G的每一个极大边双连通子图（即不是任意一个边双连通图的真子图的边双连通图）叫做此图的<strong>边双连通分量</strong>（<code>Edge Biconnected Component,EBC</code>）。</p>
+<p>连接两个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>E</mi><mi>B</mi><mi>C</mi></mrow><annotation encoding="application/x-tex">EBC</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span></span></span></span>的边即为割边/桥。</p>
+<h3 id="性质">性质：</h3>
+<ul>
+<li>
+<p>一个图不只有一个割边。</p>
+</li>
+<li>
+<p>割边和割点的位置没有联系。即：两个割点的连线并不一定是割边，割边的两个顶点并不一定是割点。</p>
+</li>
+<li>
+<p>如果<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>e</mi></mrow><annotation encoding="application/x-tex">e</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">e</span></span></span></span>是无向连通图<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">G</span></span></span></span>的一条边，则下列条件等价：</p>
+<ul>
+<li>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>e</mi></mrow><annotation encoding="application/x-tex">e</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">e</span></span></span></span>为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">G</span></span></span></span>的割边。</p>
+</li>
+<li>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>e</mi></mrow><annotation encoding="application/x-tex">e</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">e</span></span></span></span>不在<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">G</span></span></span></span>的任意一个环上。</p>
+</li>
+<li>
+<p>存在对于<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">G</span></span></span></span>的点集<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>V</mi></mrow><annotation encoding="application/x-tex">V</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">V</span></span></span></span>的划分<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>E</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>E</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">E_1,E_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，满足对于任意的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>e</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>e</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">e_1,e_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault">e</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">e</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>（<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>e</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>e</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">e_1,e_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault">e</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">e</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>分别属于<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>E</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>E</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">E_1,E_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>），<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>e</mi></mrow><annotation encoding="application/x-tex">e</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">e</span></span></span></span>在<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>e</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>e</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">e_1,e_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault">e</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">e</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>之间的每条边上。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="3割点的求法">3.割点的求法</h2>
+<h3 id="方法一暴力">方法一：暴力</h3>
+<p>直接对于一个无向图，每一个点都枚举一遍，把这个点以及连接它的边删掉，再枚举有多少个连通块即可(用<code>dfs</code>）。时间复杂度<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msup><mi>n</mi><mn>2</mn></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>。</p>
+<h3 id="方法二tarjan">方法二：Tarjan</h3>
+<p>前置芝士：<a href="https://www.luogu.com.cn/blog/wxbgsz666/tu-di-lian-tong">Tarjan&amp;Kosaraju算法，图的连通</a></p>
+<p>首先，我们找到了一个无向图<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">G</span></span></span></span>的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>f</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">dfs</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">s</span></span></span></span>搜索树。</p>
+<p>在Tarjan算法的基础上，判断割点：</p>
+<ul>
+<li>
+<p>对于根结点，如果它有两个及以上子树，那么它就是割点；</p>
+</li>
+<li>
+<p>叶子结点一定不是割点；</p>
+</li>
+<li>
+<p>对于非叶子节点<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span>，如果其某棵子树的根和子树中的其它结点均没有指向<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span>祖先的回边，则<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span>为割点。此时，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>f</mi><mi>n</mi><mo>[</mo><mi>u</mi><mo>]</mo><mo>&lt;</mo><mo>=</mo><mi>l</mi><mi>o</mi><mi>w</mi><mo>[</mo><mi>v</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">dfn[u]&lt;=low[v]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">n</span><span class="mopen">[</span><span class="mord mathdefault">u</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mclose">]</span></span></span></span>。</p>
+</li>
+</ul>
+<p>我们就得到一个时间复杂度为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>+</mo><mi>m</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n+m)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">m</span><span class="mclose">)</span></span></span></span>的优秀算法。</p>
+<p>模板：<a href="https://www.luogu.com.cn/problem/P3388">P3388 【模板】割点（割顶）</a>。</p>
+<p>code:</p>
+<p>其中，<code>Ans[]</code>表示所有割点的数组，将每个点的<code>dfn</code>和<code>low</code>值捆绑到了<code>Vert[]</code>中。</p>
+<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int N=100005;
+int n,m;
+struct Edge{
+	int u,v;
+	int next;
+}edge[N&lt;&lt;1];
+int head[N],tot=0;
+struct Vertex{
+	int dfn,low;
+}vert[N];
+int ans=0,Ans[N];
+void add_edge(int u,int v){
+	tot++;
+	edge[tot].u=u;
+	edge[tot].v=v;
+	edge[tot].next=head[u];
+	head[u]=tot;
+} 
+void dfs(int pos,int fa){
+	tot++;
+	vert[pos].dfn=vert[pos].low=tot;
+	int Child=0;
+	bool CONFIRM=false;//记录这个点是否已经被加入答案
+	for(int i=head[pos];i;i=edge[i].next){
+    
+    	//Tarjan模板部分
+		if(!vert[edge[i].v].dfn){
+			dfs(edge[i].v,pos);
+			vert[pos].low=min(vert[pos].low,vert[edge[i].v].low);
+			Child++;//记录孩子个数
+			
+           //如果满足dfn[u]&lt;=low[v]，且这个点不是根，且尚未被记录，就记录上
+           if(vert[pos].dfn&lt;=vert[edge[i].v].low&amp;&amp;fa!=-1&amp;&amp;CONFIRM==false) 
+            ans++,Ans[ans]=pos,CONFIRM=true;
+		}
+		else vert[pos].low=min(vert[pos].low,vert[edge[i].v].dfn);
+	}
+    
+    //如果是根，并且孩子大于等于2个，就记录答案
+	if(fa!=-1) return ;
+	else if(Child&gt;=2) ans++,Ans[ans]=pos;
+}
+int main(){
+	scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
+	for(int i=1;i&lt;=m;i++){
+		int u,v;
+		scanf(&quot;%d%d&quot;,&amp;u,&amp;v);
+		add_edge(u,v);
+		add_edge(v,u);
+	}
+	tot=0;
+	for(int i=1;i&lt;=n;i++) if(!vert[i].dfn) dfs(i,-1);
+	printf(&quot;%d\n&quot;,ans);
+	sort(Ans+1,Ans+ans+1);
+	for(int i=1;i&lt;=ans;i++) printf(&quot;%d &quot;,Ans[i]);
+	printf(&quot;\n&quot;);
+	exit(0);
+}
+</code></pre>
+<h2 id="4割边桥的求法">4.割边（桥）的求法</h2>
+<h3 id="方法一暴力-2">方法一：暴力</h3>
+<p>仍然是最好想的办法。枚举去掉每一条边，然后搜一遍连通分量的个数即可。时间复杂度<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>m</mi><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(mn)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>，也就是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msup><mi>n</mi><mn>2</mn></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>。</p>
+<h3 id="方法二tarjan-2">方法二：Tarjan</h3>
+<p><s>Tarjan太好用了</s></p>
+<p>首先，我们定义一个无向图<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">G</span></span></span></span>中的三种边：</p>
+<ul>
+<li>
+<p><strong>树枝边</strong> DFS时经过的边（DFS搜索树上边）</p>
+</li>
+<li>
+<p><strong>前向边</strong> 从一个结点指向该结点的非子结点后裔的边</p>
+</li>
+<li>
+<p><strong>后向边</strong> 从结点指向祖先的边</p>
+</li>
+</ul>
+<p>对于每一条边<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>&lt;</mo><mi>u</mi><mo separator="true">,</mo><mi>v</mi><mo>&gt;</mo></mrow><annotation encoding="application/x-tex">&lt;u,v&gt;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.7335400000000001em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">u</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span></span></span></span>，如果它是树枝边，且<code>dfn</code>值较小的点<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span>满足<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>f</mi><mi>n</mi><mo>[</mo><mi>u</mi><mo>]</mo><mo>&lt;</mo><mi>l</mi><mi>o</mi><mi>w</mi><mo>[</mo><mi>v</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">dfn[u]&lt;low[v]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">n</span><span class="mopen">[</span><span class="mord mathdefault">u</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mclose">]</span></span></span></span>，这条边就是割边。简单吧？</p>
+<p>code：</p>
+<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int N=1005;
+struct Vertex{
+    int dfn,low;
+    bool cut_edge;
+    int head;
+}vex[N];
+struct Edge{
+    int u,v;
+    int next;
+}edge[N&lt;&lt;1];
+int dfn,t;
+void add_edge(int u,int v,int positon);
+void tarjan(int u,int father);
+int main(){
+    int n,m,u,v;
+    scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
+    for(int i=1;i&lt;=m;i++){
+        scanf(&quot;%d%d&quot;,&amp;u,&amp;v);
+        add_edge(u, v, i*2-1);
+        add_edge(v, u, i*2);
+    }
+    for(int i=1;i&lt;=n;i++)
+        if(!vex[i].dfn)
+            tarjan(i, i);
+    exit(0);
+}
+void tarjan(int u,int father){
+    dfn++;
+    vex[u].dfn=vex[u].low=dfn;
+    for(int e=vex[u].head;e;e=edge[e].next){
+        int v=edge[e].v;
+        if(!vex[v].dfn){
+            tarjan(v,u);
+            vex[u].low=min(vex[u].low,vex[v].low);
+            if(vex[u].dfn&lt;vex[v].low)
+                cout &lt;&lt; u &lt;&lt; ' ' &lt;&lt; v &lt;&lt; endl;
+        }
+        else if(v!=father) 
+            vex[u].low = min(vex[u].low, vex[v].dfn);
+    }
+}
+void add_edge(int u, int v, int positon){
+    edge[positon].u=u;
+    edge[positon].v=v;
+    edge[positon].next=vex[u].head;
+    vex[u].head=positon;
+}
+</code></pre>
+<h2 id="5点双连通分量bcc的求法">5.点双连通分量（<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>B</mi><mi>C</mi><mi>C</mi></mrow><annotation encoding="application/x-tex">BCC</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span></span></span></span>）的求法</h2>
+<p><strong>用<code>Tarjan</code>算法</strong>。对图进行<code>DFS</code>，可以得到图中每一个点的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>f</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">dfn</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">n</span></span></span></span>和<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi><mi>o</mi><mi>w</mi></mrow><annotation encoding="application/x-tex">low</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span></span></span></span>值，并将点入栈。这样发现每一个割点时，就将该子树出栈，并将该子树和当前结点加入<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>B</mi><mi>C</mi><mi>C</mi></mrow><annotation encoding="application/x-tex">BCC</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span></span></span></span>中。特别地，如果这个点是“孤立点”，那么它就是一个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>B</mi><mi>C</mi><mi>C</mi></mrow><annotation encoding="application/x-tex">BCC</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span></span></span></span>。</p>
+<p>code:</p>
+<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int N=100005;
+int n,m;//n表示点数，m表示边数
+struct Vert{//tarjan基本变量
+	int dfn,low;
+}vert[N];
+struct Edge{
+	int u,v,next;
+}edge[N&lt;&lt;1];
+int head[N],tot=0;
+int bcc_cnt;//用来记录BCC的个数
+vector&lt;int&gt;bcc[N];//记录每个BCC的点的编号
+stack&lt;int&gt;s;//进行操作的栈
+void add_edge(int u,int v){//建边
+	tot++;
+	edge[tot].u=u;
+	edge[tot].v=v;
+	edge[tot].next=head[u];
+	head[u]=tot;
+	return ;
+}
+void tarjan(int u,int fa){
+	tot++;s.push(u);
+	int son=0;
+	vert[u].dfn=vert[u].low=tot;//初始化dfn,low值
+	for(int e=head[u];e;e=edge[e].next){
+		int v=edge[e].v;
+		if(!vert[v].dfn){
+			son++;
+			tarjan(v,u);
+			vert[u].low=min(vert[u].low,vert[v].low);
+			if(vert[u].dfn&lt;=vert[v].low){//如果这个点是割点
+				bcc_cnt++;//增加一个BCC
+				int tp;
+				while(tp!=v){//将子树全部加进BCC中
+					tp=s.top();s.pop();
+					bcc[bcc_cnt].push_back(tp);
+				}
+				bcc[bcc_cnt].push_back(u);//将自己加入BCC中
+			}
+		}
+		else if(v!=fa) vert[u].low=min(vert[u].low,vert[v].dfn);
+	} 
+	return ;
+}
+int main(){
+	scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
+	for(int i=1;i&lt;=m;i++){
+		int u,v;
+		scanf(&quot;%d%d&quot;,&amp;u,&amp;v);
+		add_edge(u,v);
+		add_edge(v,u);
+	}
+	tot=0;
+	for(int i=1;i&lt;=n;i++)
+		if(!vert[i].dfn)
+			tarjan(i,i);
+    //输出答案
+	for(int i=1;i&lt;=bcc_cnt;i++){
+		for(int j=0;j&lt;bcc[i].size();j++)
+			printf(&quot;%d &quot;,bcc[i][j]);
+		printf(&quot;\n&quot;);
+	}
+	exit(0);
+}
+</code></pre>
+<h2 id="6边双连通分量ebc的求法">6.边双连通分量（<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>E</mi><mi>B</mi><mi>C</mi></mrow><annotation encoding="application/x-tex">EBC</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span></span></span></span>）的求法</h2>
+<p><strong>方法<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span></strong>：使用<code>Tarjan</code>算法。只需求出桥之后，把桥边删除，原图就变成了许多连通块，每一个连通块就是一个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>E</mi><mi>B</mi><mi>C</mi></mrow><annotation encoding="application/x-tex">EBC</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span></span></span></span>。</p>
+<p><strong>方法<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span></strong>：每次访问点时将其入栈，当<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>f</mi><mi>n</mi><mo>[</mo><mi>u</mi><mo>]</mo><mo>=</mo><mo>=</mo><mi>l</mi><mi>o</mi><mi>w</mi><mo>[</mo><mi>u</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">dfn[u]==low[u]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">n</span><span class="mopen">[</span><span class="mord mathdefault">u</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mopen">[</span><span class="mord mathdefault">u</span><span class="mclose">]</span></span></span></span>时就说明找到了一个连通的块，则栈内的所有点都属于一个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>E</mi><mi>B</mi><mi>C</mi></mrow><annotation encoding="application/x-tex">EBC</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span></span></span></span>。因为无向图要加反向边，所以在求<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>E</mi><mi>B</mi><mi>C</mi></mrow><annotation encoding="application/x-tex">EBC</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span></span></span></span>时，遇到反向边跳过就行。</p>
+<p>这里我们不具体介绍第一种方法的代码。下面是第二种方法的代码。<br>
+code：</p>
+<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int N=100005;
+int n,m;
+struct Vert{
+	int dfn,low;
+}vert[N];
+struct Edge{
+	int u,v,next;
+}edge[N&lt;&lt;1];
+int head[N],tot=0;
+int ebc_cnt;
+vector&lt;int&gt;ebc[N];
+stack&lt;int&gt;s;
+void add_edge(int u,int v){
+	tot++;
+	edge[tot].u=u;
+	edge[tot].v=v;
+	edge[tot].next=head[u];
+	head[u]=tot;
+	return ;
+}
+void tarjan(int u,int fa){
+	bool flag=false;
+	tot++;s.push(u);
+	vert[u].dfn=vert[u].low=tot;
+	for(int e=head[u];e;e=edge[e].next){
+		int v=edge[e].v;
+		if(!vert[v].dfn){
+			tarjan(v,u);
+			vert[u].low=min(vert[u].low,vert[v].low);
+		}
+		else if(v!=fa||flag) vert[u].low=min(vert[u].low,vert[v].dfn);
+		else flag=true;
+        //防止反向边
+	} 
+	if(vert[u].low==vert[u].dfn){
+		ebc_cnt++; 
+		int tp;
+		while(tp!=u){
+        //所有在栈中且是u的子树的都是EBC
+			tp=s.top();
+			s.pop();
+			ebc[ebc_cnt].push_back(tp); 
+		}
+	} 
+	return ;
+}
+int main(){
+	scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
+	for(int i=1;i&lt;=m;i++){
+		int u,v;
+		scanf(&quot;%d%d&quot;,&amp;u,&amp;v);
+		add_edge(u,v);
+		add_edge(v,u);
+	}
+	tot=0;
+	for(int i=1;i&lt;=n;i++)
+		if(!vert[i].dfn)
+			tarjan(i,i);
+	for(int i=1;i&lt;=ebc_cnt;i++){//输出每一个EBC
+		for(int j=0;j&lt;ebc[i].size();j++)
+			printf(&quot;%d &quot;,ebc[i][j]);
+		printf(&quot;\n&quot;);
+	}
+	exit(0);
+}
+</code></pre>
+<h2 id="7关于ebc的问题">7.关于EBC的问题</h2>
+<h4 id="如果一个图g要将它增加一些边使得g变为边双连通子图-那么至少增加多少条边">如果一个图<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">G</span></span></span></span>，要将它增加一些边，使得<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">G</span></span></span></span>变为边双连通子图。那么至少增加多少条边？</h4>
+<p>可以先求<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">G</span></span></span></span>的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>E</mi><mi>B</mi><mi>C</mi></mrow><annotation encoding="application/x-tex">EBC</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span></span></span></span>。将每一个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>E</mi><mi>B</mi><mi>C</mi></mrow><annotation encoding="application/x-tex">EBC</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span></span></span></span>缩成一个点，这几个点互相之间连接的边形成了一棵树。则仅需在度数为1的结点上加边即可。设度数为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>的结点的个数为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span>，则答案就是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>[</mo><mfrac><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow><mn>2</mn></mfrac><mo>]</mo></mrow><annotation encoding="application/x-tex">[\dfrac{k+1}{2}]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.05744em;vertical-align:-0.686em;"></span><span class="mopen">[</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.37144em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose">]</span></span></span></span>。</p>
+
+							</div>
+	<div class="wow bounceInDown vt-post-tags">
+ 
+				<a href="https://PeppaKing8.github.io/tag/_CwYvBOj8/" rel="tag">Course</a>	
+				 
+				<a href="https://PeppaKing8.github.io/tag/Ad85aQKU0/" rel="tag">Independent Creation</a>	
+				 
+				<a href="https://PeppaKing8.github.io/tag/2NkZlbOtF/" rel="tag">OI</a>	
+				 
+					</div>						
+<nav class="navigation3 post-navigation3" role="navigation">
+		
+		<div class="nav-links3">
+      
+		<div class="wow bounceInLeft nav-previous3"><a href="https://PeppaKing8.github.io/post/juanlaoti/" rel="prev"> 奆佬题</a></div>
+		 
+		 
+		<div class="wow bounceInRight nav-next3"><a href="https://PeppaKing8.github.io/post/lca/" rel="next"> LCA</a></div>
+		
+		</div>
+	</nav>
+	<div class="wow rollIn author-info" style="visibility: visible; animation-name: rollIn;">
+	<div class="author-avatar pull-left"><img src="https://PeppaKing8.github.io/images/avatar.png" ></div>
+ 
+	<div class="author-description"><div class="author-title"><div class="author-link" rel="author">用户未知 | User Unknown</div></div>
+
+
+	<p class="author-bio">Stay hungry, stay foolish.</p></div></div>
+	
+		</div>
+		
+ 
+		
+</article>
+
+<div id="marlin_lite_about_widget-2" class="wow bounceInUp widget marlin_lite_about_widget" data-wow-delay="0.1s">
+		
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'f9cef8a93edc0400a4ff',
+    clientSecret: 'edee6a7527b3138abcca020207eba11a7463679d',
+    repo: 'peppaking8.github.io',
+    owner: 'User Unknown',
+    admin: ['User Unknown'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+          
+        
+		<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://PeppaKing8.github.io/media/scripts/Valine.min.js'></script>
+
+<div class="comment"></div>
+<script>
+        new Valine({
+            // AV 对象来自上面引入av-min.js(老司机们不要开车➳♡゛扎心了老铁)
+            av: AV, 
+            el: '.comment',
+            lang: 'zh-cn',
+            
+            admin_email:'1315827288@qq.com',
+            
+            
+      emoticon_list: ["吐.png","喷血.png","狂汗.png","不说话.png","汗.png","坐等.png","献花.png","不高兴.png","中刀.png","害羞.png","皱眉.png","小眼睛.png","中指.png","尴尬.png","瞅你.png","想一想.png","中枪.png","得意.png","肿包.png","扇耳光.png","亲亲.png","惊喜.png","脸红.png","无所谓.png","便便.png","愤怒.png","蜡烛.png","献黄瓜.png","内伤.png","投降.png","观察.png","看不见.png","击掌.png","抠鼻.png","邪恶.png","看热闹.png","口水.png","抽烟.png","锁眉.png","装大款.png","吐舌.png","无奈.png","长草.png","赞一个.png","呲牙.png","无语.png","阴暗.png","不出所料.png","咽气.png","期待.png","高兴.png","吐血倒地.png","哭泣.png","欢呼.png","黑线.png","喜极而泣.png","喷水.png","深思.png","鼓掌.png","暗地观察.png"],
+     	
+      	
+          
+      placeholder: '写下你的评论~'
+       
+        });
+    </script> 
+
+
+   
+  
+ 
+
+		</div>
+
+			</div>
+			
+
+
+<div class="tocc col l3 hide-on-med-and-down">
+	
+        <div class="toc-widget">
+			
+            <div class="toc-title"></div>
+			
+            <div id="toc-content">
+			
+			
+			</div>
+        </div>
+    </div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.5.0/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '.entry-summary',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('.entry-summary').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+    });
+</script>										 
+
+ 
+       
+
+
+			</div>
+		</div>
+
+		
+		 	<footer id="colophon" class="site-footer">
+
+			<div class="container">
+	
+				<div class="copyright">Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a><br>Theme:   <a href="https://github.com/shanbufun/gridea-theme-pan" target="_blank" title="Pan"><span>Pan</span></a>.  by <a href="https://shanbu.fun/" target="_blank"  title="山卜方" >Shanbufun</a></div>		
+			</div>
+		
+		</footer>
+
+</div>
+
+<script src="https://cdn.bootcss.com/fitvids/1.2.0/jquery.fitvids.min.js"></script>
+<script type='text/javascript' src='https://PeppaKing8.github.io/media/scripts/marlin-scripts.js'></script>
+ <script src="//tokinx.github.io/lately/lately.min.js"></script>
+  <script>jQuery(document).ready(function(){$.lately({'target':'.lately-a,.lately-b,.lately-c'})});</script>
+  <style type="text/css">a.back_to_top {
+    text-decoration: none;
+    position: fixed;
+    bottom: 40px;
+    right: 30px;
+    background: #f0f0f0;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    line-height: 36px;
+    font-size: 18px;
+    text-align: center;
+    transition-duration: .5s;
+    transition-propety: background-color;
+    display: none;
+}
+
+a.back_to_top span {
+    color: #888;
+}
+
+a.back_to_top:hover {
+    cursor: pointer;
+    background: #dfdfdf;
+}
+
+a.back_to_top:hover span {
+    color: #555;
+}
+
+@media print, screen and (max-width: 580px) {
+    .back_to_top {
+        display: none !important;
+    }
+}
+
+
+
+</style><a id="back_to_top" href="#" class="back_to_top"><span><i class="iconfont icon-xiangshang"></i></span>
+</a>
+
+
+<script>$(document).ready((function(_this) {
+  return function() {
+    var bt;
+    bt = $('#back_to_top');
+    if ($(document).width() > 480) {
+      $(window).scroll(function() {
+        var st;
+        st = $(window).scrollTop();
+        if (st > 30) {
+          return bt.css('display', 'block');
+        } else {
+          return bt.css('display', 'none');
+        }
+      });
+      return bt.click(function() {
+        $('body,html').animate({
+          scrollTop: 0
+        }, 800);
+        return false;
+      });
+    }
+  };
+})(this));
+</script>
+
+		<script data-no-instant>
+    (function ($) {
+        $.extend({
+            adamsOverload: function () {
+                $('.navigation:eq(0)').remove();
+                $("").attr("rel" , "external");
+                $("a[rel='external'],a[rel='external nofollow']").attr("target","_blank");
+                $("a.vi").attr("rel" , "");
+                $.viewImage({
+                    'target'  : 'img',
+                    'exclude' : '.vsmile-icons img,.gallery img',
+                    'delay'   : 300
+                });
+                $.lately({
+                    'target' : '.commentmetadata a,.infos time,.post-list time'
+                });
+                prettyPrint();
+                
+                $('ul.links li a').each(function(){
+                    if($(this).parent().find('.bg').length==0){
+                        $(this).parent().append('<!---<div class="bg" style="background-image:url(https://c3.glgoo.top/s2/favicons?domain='+$(this).attr("href")+')"></div>--->')
+                    }
+                });
+            }
+        });
+    })(jQuery);
+    jQuery.adamsOverload();
+</script>
+
+</body>
+</html>
